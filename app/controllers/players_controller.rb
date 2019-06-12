@@ -34,7 +34,8 @@ class PlayersController < ApplicationController
 
 	def get_player
 		@player = Player.find(params[:id])
-		@player_statistic = PlayerStatisticService.new(player: @player, saison: @player.saison_current)
+		byebug
+		@player_statistic = PlayerStatistic::Individual.new(player: @player, saison: @player.saison_current)
 	end
 
 	def ranking

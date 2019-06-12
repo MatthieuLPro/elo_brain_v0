@@ -22,6 +22,8 @@ class RankingsController < ApplicationController
   end
 
   def tournois_t7
+    @tournoi_all = Event.where("event_game='t7' AND nb_participant > 0")
+    @tournoi_saison = Event.where("event_game='t7' AND saison=1 AND nb_participant > 0")
   end
 
   private
