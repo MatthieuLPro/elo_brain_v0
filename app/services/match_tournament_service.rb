@@ -4,12 +4,20 @@ class MatchTournamentService
 		@saison = saison
 	end
 
+	def get_tournoi_total
+		tournoi_total_show
+	end
+
+	def get_tournoi_saison
+		tournoi_saison_show
+	end
+
 	def nb_tournoi_total
-		tournoi_total
+		tournoi_total.count
 	end
 
 	def nb_tournoi_saison
-		tournoi_saison
+		tournoi_saison.count
 	end
 
 	def nb_match_total
@@ -39,7 +47,7 @@ class MatchTournamentService
 			next if elo.match_id == 0
 			tournoi_total << Match.find(elo.match_id).event_id unless tournoi_total.include? Match.find(elo.match_id).event_id
 		end
-		tournoi_total.count
+		tournoi_total
 	end
 
 	def tournoi_saison
@@ -51,6 +59,23 @@ class MatchTournamentService
 				tournoi_saison << Match.find(elo.match_id).event_id unless tournoi_saison.include? Match.find(elo.match_id).event_id
 			end
 		end
-		tournoi_saison.count
+		tournoi_saison
+	end
+
+	def tournoi_total_show
+		tournoi_total_show = Array.new
+		tournoi_total.each do |event_id|
+			tournoi_total_show << Event.find(event_id) unless tournoi_total_show.include? Event.find(event_id) 
+		end
+		tournoi_total_show
+	end
+
+	def tournoi_saison_show
+		tournoi_saison_show = Array.new
+		tournoi_total.each do |event_id|
+			next unless Event.find(event_id).saison == saison
+			tournoi_saison_show << Event.find(event_id) unless tournoi_saison_show.include? Event.find(event_id) 
+		end
+		tournoi_saison_show
 	end
 end
