@@ -17,7 +17,7 @@ class ElosController < ApplicationController
 		redirect_to new_elo_path unless @events
 		player_array = Array.new
 		#update_previous_ranking
-		@events.each do |event|
+		@events.reverse.each do |event|
 			matches = event.matches.all.sort_by { |matche| [matche.phase, matche.ordre] }
 			matches.each do |matche|
 				player_1 = @players.select { |player| player if player.id == matche.player_1_id }.first
