@@ -1,0 +1,25 @@
+body {
+	padding-top: 30px;
+	padding-bottom: 80px;
+	font-family: 'Roboto', 'sans-serif';
+	font-size: 1.0em;
+}
+
+h1 {
+	font-size: 4.0em;
+	letter-spacing: 0.1em;
+}
+
+li {
+	padding-right: 3em;
+}
+
+.subheading {
+	letter-spacing: 0.1em;
+	color: #999;
+}
+
+.subtext {
+	color: #999;
+	font-size: 0.8em;
+}

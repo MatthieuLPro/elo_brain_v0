@@ -1,0 +1,158 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="table-responsive">
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr align="center">
+							<th colspan="2" style="border-top: none;">Player informations</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="border-right: 1px solid #999" align="right">Name</td>
+							<td><%= @player.nickname %></td>
+						</tr>
+						<% unless @player.team.blank? %>
+							<tr>
+								<td style="border-right: 1px solid #999" align="right">Team</td>
+								<td><%= @player.team %></td>
+							</tr>
+						<% end %>
+						<tr>
+							<td style="border-right: 1px solid #999" align="right">Place</td>
+							<td><%= @player.place %></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="table-responsive">
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr align="center">
+							<th colspan="6" style="border-top: none;">Rival informations</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% 3.times do |i| %>
+							<tr>
+								<td style="border-right: 1px solid #999" align="right">Name</td>
+								<td><%= link_to @player_statistic.get_rival_total[i][0], player_path(Player.find_by(nickname: @player_statistic.get_rival_total[i][0])) %></td>
+								<td style="border-right: 1px solid #999" align="right">Match</td>
+								<td><%= @player_statistic.get_rival_total[i][1] %></td>
+								<td style="border-right: 1px solid #999" align="right">Win Rate</td>
+								<td><%= @player_statistic.get_percent_rival_victory.values[i] %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="table-responsive">
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr align="center">
+							<th colspan="2" style="border-top: none;">Player statistics</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="border-right: 1px solid #999" align="right">Début</td>
+							<td><%= @player.elos.first.created_at.strftime("%d-%m-%Y") %></td>
+						</tr>
+						<tr>
+							<td style="border-right: 1px solid #999" align="right">Dernier</td>
+							<td><%= @player.elos.last.created_at.strftime("%d-%m-%Y") %></td>
+						</tr>
+						<tr>
+							<td style="border-right: 1px solid #999" align="right">Record Elo</td>
+							<td><%= @player.elos.map { |elo| elo[:value]}.max.round %></td>
+						</tr>
+						<tr>
+							<td style="border-right: 1px solid #999" align="right">Nombre match total</td>
+							<td><%= @player.nb_match_total %></td>
+						</tr>
+						<tr>
+							<td style="border-right: 1px solid #999" align="right">Nombre match saison</td>
+							<td><%= @player.nb_match_saison %></td>
+						</tr>
+						<tr>
+							<td style="border-right: 1px solid #999" align="right">Nombre tournoi total</td>
+							<td><%= @player.nb_tournoi_saison %></td>
+						</tr>
+						<tr>
+							<td style="border-right: 1px solid #999" align="right">Nombre tournoi saison</td>
+							<td><%= @player.nb_tournoi_saison %></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="table-responsive">
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr align="center">
+							<th>Elo</th>
+							<th>Adversaire</th>
+							<th>Résultat</th>
+							<th>Différence elo</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @player.elos.sort.reverse.each_with_index do |elo, i| %>
+							<tr align="center">
+								<td><%= elo.value.round %></td>
+								<td>
+									<% if i >= @player.elos.count - 1 %>
+									-
+									<% elsif elo.match_id == 0%>
+										1500
+									<% elsif Match.find(elo.match_id).player_1_id == @player.id %>
+										<%= Player.find(Match.find(elo.match_id).player_2_id).nickname %>		
+									<% else %>
+										<%= Player.find(Match.find(elo.match_id).player_1_id).nickname %>		
+									<% end %>
+								</td>
+								<td>
+									<% if i >= @player.elos.count - 1 %>
+									-
+									<% else %>
+										<%= (elo.value - @player.elos.sort.reverse[i + 1].value) > 0 ? "Victoire" : "Défaite" %>
+									<% end %>
+
+								</td>
+								<td>
+									<% if i >= @player.elos.count - 1 %>
+									-
+									<% else %>
+									<div class="row">
+										<div class="col-md-3 offset-md-3">
+										<% if (elo.value - @player.elos.sort.reverse[i + 1].value) > 0 %>
+										+
+										<% else %>
+										-
+										<% end %> 
+										<%= ((elo.value - @player.elos.sort.reverse[i + 1].value).round).abs %>
+										</div>
+										<div class="col-md-1">
+											<% if elo.value - @player.elos.sort.reverse[i + 1].value > 0 %>
+												<i class="fa fa-arrow-circle-up" style="color: green;"></i>
+											<% else %>
+												<i class="fa fa-arrow-circle-down" style="color: red;"></i>
+											<% end %>
+										</div>
+									</div>
+									<% end %>
+								</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

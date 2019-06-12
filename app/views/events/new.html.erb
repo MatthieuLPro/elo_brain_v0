@@ -1,0 +1,94 @@
+<div class="container">
+	<div class="row" style="margin-top: 3%;">
+		<div class="col-md-6">
+			<h1>Create Events</h1>
+		</div>
+		<div class="col-md-6">
+			<%= link_to "Index Events", events_path, class: "btn btn-primary" %>
+		</div>
+	</div>
+	<br/>
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Actual Season</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+				<tr>
+					<th>Tekken 7</th>
+					<th>Smash Bros Ultimate</th>
+					<th>Soul Calibur</th>
+					<th>Guilty Gear</th>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h2>SmashGG API Filter</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<label>Game name:</label>
+			<%= select_tag("search_game", options_for_select([["Tekken 7","t7"],["Super Smash Bros Ultimate","smbu"],["Soul Calibur","sc"],["Guilty Gear","gg"]])) %>
+		</div>
+		<div class="col-md-4">
+			<label>Tournoi place:</label>
+			<%= select_tag("search_place", options_for_select([["Paris","paris"],["Lyon","lyon"],["Marseille","marseille"]])) %>
+		</div>
+		<div class="col-md-4">
+			<button onclick="get_tournament_infos()">Search</button>
+		</div>
+	</div>
+	<br/>
+	<h2>Collected data</h2>
+	<div id="result-tour"></div>
+	<%= form_tag(controller: "events", action: "create", method: "post") do |f| %>
+		<div id="my-table">
+			<div class="row">
+				<div class="col-md-3">
+					<label>Tournoi name</label>
+					<%= text_field :tournoi_name, "", id: "tn-name", required: true %>
+				</div>
+				<div class="col-md-3">
+					<label>ID tournois Smashgg:</label>
+					<%= text_field :sgtournoi_id, "", id: "tn-id", required: true %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<label>Date tournois:</label>
+					<%= text_field :tournoi_date, "", id: "tn-startAt", required: true %>
+				</div>
+				<div class="col-md-3">
+					<label>ID event Smashgg:</label>
+					<%= text_field :sgevent_id, "", id: "tn-eventId", required: true %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<label>Game:</label>
+					<%= text_field :event_game, "", id: "tn-game", required: true %>
+				</div>
+				<div class="col-md-3">
+					<label>Tournoi place:</label>
+					<%= text_field :tournoi_place, "", id: "tn-place", required: true %>
+				</div>
+				<div class="col-md-3">
+					<label>Season:</label>
+					<%= text_field :saison, "", required: true %>
+				</div>
+			</div>
+		</div>
+		<%= submit_tag("Create") %>
+	<% end %>
+</div>

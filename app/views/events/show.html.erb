@@ -1,0 +1,67 @@
+<div class="row">
+	<div class="col-md-4">Nom Tournoi: <%= @event.tournoi_name %></div>
+	<div class="col-md-4">Date Tournoi: <%= @event.tournoi_date %></div>
+	<div class="col-md-4">Nombre de participant: <%= @nb_participant %></div>
+	<div class="col-md-4">Nombre de match: <%= @nb_match %></div>
+</div>
+<div class="row">
+	<div class="col-md-4">
+	<h2>Liste des participants</h2>
+		<table class="table">
+			<tr>
+				<th>Joueur</th>
+				<th>Team</th>
+				<th>Nombre de match</th>
+				<th>Victory Rate</th>
+			</tr>
+			<% @array_participant.each do |participant| %>
+				<tr>
+					<td><%= participant.nickname %></td>
+					<td><%= participant.team %></td>
+					<td><%= @hash_match_participant[participant.id] %></td>
+					<td><%= @hash_victory_participant[participant.id] %> %</td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+	<div class="col-md-4">
+	<h2>Liste des matches</h2>
+		<table class="table">
+			<tr>
+				<th>Joueur 1</th>
+				<th>Joueur 2</th>
+			</tr>
+			<% @event_matches.each do |matche| %>
+				<tr>
+					<% if matche.result %>
+						<td style="background-color: green;">
+					<% else %>
+						<td style="background-color: red;">
+					<% end %>
+						<%= Player.find(matche.player_1_id).nickname %></td>
+					<% if matche.result %>
+						<td style="background-color: red;">
+					<% else %>
+						<td style="background-color: green;">
+					<% end %>
+					<%= Player.find(matche.player_2_id).nickname %></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+	<div class="col-md-4">
+	<h2>Podium</h2>
+		<table class="table">
+			<tr>
+				<th>Rang</th>
+				<th>Joueur</th>
+			</tr>
+			<% 3.times do |i| %>
+				<tr>
+					<td><%= i + 1 %></td>
+					<td><%= Player.find(@hash_podium[(i + 1).to_s]).nickname %></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+</div>

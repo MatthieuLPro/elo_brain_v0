@@ -1,0 +1,97 @@
+<div class="container">
+	<div class="row" style="margin-top: 3%;">
+		<div class="col-md-6">
+			<h1>Create Matches</h1>
+		</div>
+		<div class="col-md-6">
+			<%= link_to "Index Matches", matches_path, class: "btn btn-primary" %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Actual Season</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+				<tr>
+					<th>Tekken 7</th>
+					<th>Smash Bros Ultimate</th>
+					<th>Soul Calibur</th>
+					<th>Guilty Gear</th>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h2>SmashGG API Filter</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<label>Game name:</label>
+			<%= select_tag("search_game", options_for_select([["Tekken 7","t7"],["Super Smash Bros Ultimate","smbu"],["Soul Calibur", "sc"],["Guilty Gear", "gg"]])) %>
+		</div>
+		<div class="col-md-4">
+			<label>Tournoi place:</label>
+			<%= select_tag("search_place", options_for_select([["Paris", "paris"],["Lyon", "lyon"],["Marseille", "marseille"]])) %>
+		</div>
+		<div class="col-md-4">
+			<input type="hidden" value="<%= @array_paris_t7 %>" id='paris_t7'> 
+			<input type="hidden" value="<%= @array_lyon_t7 %>" id='lyon_t7'> 
+			<input type="hidden" value="<%= @array_marseille_t7 %>" id='marseille_t7'>
+			<input type="hidden" value="<%= @array_paris_smbu %>" id='paris_smbu'> 
+			<input type="hidden" value="<%= @array_lyon_smbu %>" id='lyon_smbu'> 
+			<input type="hidden" value="<%= @array_marseille_smbu %>" id='marseille_smbu'> 
+			<button onclick="get_match_infos()">Chercher</button>
+		</div>
+	</div>
+	<br/>
+	<h2>Collected data</h2>
+	<div id="result-tour"></div>
+	<%= form_tag(controller: "matches", action: "create", method: "post") do |f| %>
+		<div id="my-table">
+			<div class="row">
+				<div class="col-md-3">
+					<label>Match content</label>
+					<%= text_field :result, "", id: "match-result", required: true %>
+				</div>
+				<div class="col-md-3">
+					<label>Match event id</label>
+					<%= text_field :event_id, "", id: "match-event-id", required: true %>
+				</div>
+				<div class="col-md-3">
+					<label>Match ordre</label>
+					<%= text_field :ordre, "", id: "match-ordre", required: true %>
+				</div>
+				<div class="col-md-3">
+					<label>Match phase</label>
+					<%= text_field :phase, "", id: "match-groupe", required: true %>
+				</div>
+				<div class="col-md-3">
+					<label>Match round</label>
+					<%= text_field :round, "", id: "match-round", required: true %>
+				</div>
+				<div class="col-md-3">
+					<label>Match place</label>
+					<%= text_field :place, "", id: "place-id", required: true %>
+				</div>
+				<div class="col-md-3">
+					<label>Match saison</label>
+					<%= text_field :season, "", required: true %>
+				</div>
+			</div>
+		</div>
+		<%= submit_tag("Create") %>
+	<% end %>
+
+	<div id="my-table-bis"></div>
+</div>

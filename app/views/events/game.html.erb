@@ -1,0 +1,79 @@
+<div class="container-fluid">
+	<div class="row">
+		<h1>Index Events <%= @game_name.upcase %></h1>
+	</div>
+	<div class="row">
+		<div class="col-md-1"><%= link_to "All Events", events_path, class: "btn btn-primary" %></div>
+		<% ["t7", "smbu", "sc", "gg"].each do |game| %>
+			<% if Event.find_by(event_game: game) %>
+				<div class="col-md-1"><%= link_to "All Events #{game.upcase}", event_game_path(Event.find_by(event_game: game)), class: "btn btn-primary" %></div>
+			<% end %>
+		<% end %>
+	</div>
+	<br/>
+	<div class="row">
+		<div class="col-md-6">
+			<h1 align="center">All Events <%= @game_name.upcase %></h1>
+			<p align="center">Nombre de tournoi: <%= @events.count %> | Nombre de match: <%= @nb_match_total %></p>
+			<table class="table">
+				<tr>
+					<th>Nom tournoi</th>
+					<th>Date tournoi</th>
+					<th>ID tournoi Smashgg</th>
+					<th>ID Event Smashgg</th>
+					<th>ID</th>
+					<th>Place</th>
+					<th>Game</th>
+					<th>Nb participant</th>
+					<th>Nb match</th>
+				</tr>
+				<% @events.each do |event| %>
+					<% next unless event.matches.first %>
+					<tr>
+						<td><%= event.tournoi_name %></td>
+						<td><%= event.tournoi_date %></td>
+						<td><%= event.sgtournoi_id %></td>
+						<td><%= event.sgevent_id %></td>
+						<td><%= event.id %></td>
+						<td><%= event.tournoi_place %></td>
+						<td><%= event.event_game %></td>
+						<td><%= event.nb_participant %></td>
+						<td><%= event.nb_match %></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+		<div class="col-md-6">
+			<h1 align="center">Events Actual Season <%= @game_name.upcase %></h1>
+			<p align="center">Nombre de tournoi: <%= @events_season.count %> | Nombre de match: <%= @nb_match_season %></p>
+			<table class="table">
+				<tr>
+					<th>Nom tournoi</th>
+					<th>Date tournoi</th>
+					<th>ID tournoi Smashgg</th>
+					<th>ID Event Smashgg</th>
+					<th>ID</th>
+					<th>Place</th>
+					<th>Game</th>
+					<th>Nb participant</th>
+					<th>Nb match</th>
+				</tr>
+				<% @events_season.each do |event| %>
+					<% next unless event %>
+					<% next unless event.matches.first %>
+					<tr>
+						<td><%= event.tournoi_name %></td>
+						<td><%= event.tournoi_date %></td>
+						<td><%= event.sgtournoi_id %></td>
+						<td><%= event.sgevent_id %></td>
+						<td><%= event.id %></td>
+						<td><%= event.tournoi_place %></td>
+						<td><%= event.event_game %></td>
+						<td><%= event.nb_participant %></td>
+						<td><%= event.nb_match %></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>

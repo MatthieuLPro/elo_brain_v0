@@ -1,0 +1,34 @@
+<div class="container">
+	<div class="row">
+		<h3>Top 10 - Tekken 7</h3>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="table-responsive">
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr align="center">
+							<th>#</th>
+							<th>Player</th>
+							<th>Elo</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% 10.times do |i| %>
+							<tr align="center">
+								<th><%= i + 1 %></td>
+								<td><%= link_to @ranking.get_top_10_t7[i].nickname, player_path(@ranking.get_top_10_t7[i].id) %></td>
+								<td><%= @ranking.get_top_10_t7[i].elos.last.value.round %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="row" align="right">
+		<div class="col-md-12">
+			<p class="subtext"> Dernière mise à jour le 25.06.2019. Prochaine mise à jour le 01.07.2019.</p>
+		</div>
+	</div>
+</div>

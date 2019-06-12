@@ -1,0 +1,19 @@
+<h1>Update Players</h1>
+<div><%= link_to "Index Players", players_path %></div>
+<div id="result-tour"></div>
+<%= form_tag(controller: "players", action: "create", method: "post") do |f| %>
+	<%= hidden_field :saison, 1 %>
+	<div id="my-table">
+		<div class="row">
+			<div class="col-md-3">
+				<label>Nom des tournois:</label>
+				<%= select_tag :place, options_for_select([["Paris","paris"],["Lyon","lyon"],["Marseille","marseille"]]) %>
+			</div>
+			<div class="col-md-3">
+				<label>ID tournois Smashgg:</label>
+				<%= select_tag :game, options_for_select([["Tekken 7","t7"],["Super Smash Bros Ultimate","smbu"]]) %>
+			</div>
+		</div>
+	</div>
+	<%= submit_tag("Create") %>
+<% end %>

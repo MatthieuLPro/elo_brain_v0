@@ -1,0 +1,28 @@
+<div class="container">
+	<div class="row">
+		<h1>Index Elos</h1>
+	</div>
+	<div class="row">
+		<table class="table">
+			<tr>
+				<th>ID</th>
+				<th>Value</th>
+				<th>Player</th>
+				<th>Match</th>
+				<th>Event</th>
+				<th>Saison</th>
+			</tr>
+			<% @elos.each do |elo| %>
+				<tr>
+					<td><%= elo.id %></td>
+					<td><%= elo.value %></td>
+					<td><%= Player.find(elo.player_id).nickname %></td>
+					<td><%= elo.match_id == 0 ? "/" : Match.find(elo.match_id) %></td>
+					<td><%= elo.match_id == 0 ? "/" : Event.find(Match.find(elo.match_id).event_id) %></td>
+					<td><%= elo.saison %></td>
+				</tr>
+			<% end %>
+		</table>
+		<div><%= link_to "Generate new elo", new_elo_path %></div>
+	</div>
+</div>

@@ -1,0 +1,39 @@
+<div class="row">
+	<div class="col-md-5">
+		<h1>Ranking General</h1>
+		<table class="table">
+			<tr>
+				<th>Rank</th>
+				<th>Joueur</th>
+				<th>Team</th>
+				<th>Game</th>
+				<th>Elo actuel</th>
+				<th>Nombre de match total</th>
+				<th>Nombre de match saison</th>
+				<th>Nombre de tournoi total</th>
+				<th>Nombre de tournoi saison</th>
+				<th>Place</th>
+				<th>Ranking Record</th>
+				<th>Ranking Previous</th>
+				<th>Current saison</th>
+			</tr>
+			<% @players.each_with_index do |player, i| %>
+			<tr>
+				<td><%= i + 1 %></td>
+				<td><%= link_to player.nickname, player_path(player.id) %></td>
+				<td><%= player.team %></td>
+				<td><%= player.game %></td>
+				<td><%= player.elos.first %></td>
+				<td><%= player.nb_match_total %></td>
+				<td><%= player.nb_match_saison %></td>
+				<td><%= player.nb_tournoi_total %></td>
+				<td><%= player.nb_tournoi_saison %></td>
+				<td><%= player.place %></td>
+				<td><%= player.ranking_record %></td>
+				<td><%= player.ranking_previous %></td>
+				<td><%= player.saison_current %></td>
+			<tr>
+			<% end %>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,57 @@
+<div class="container">
+	<div class="row" style="margin-top: 3%;">
+		<div class="col-md-6">
+			<h1>Create Elos</h1>
+		</div>
+		<div class="col-md-6">
+			<%= link_to "Index Elos", elos_path, class: "btn btn-primary" %>
+		</div>
+	</div>
+	<br/>
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Actual Season</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+				<tr>
+					<th>Tekken 7</th>
+					<th>Smash Bros Ultimate</th>
+					<th>Soul Calibur</th>
+					<th>Guilty Gear</th>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<br/>
+	<h2>Call create elos</h2>
+	<div id="result-tour"></div>
+	<%= form_tag(controller: "elos", action: "create", method: "post") do |f| %>
+		<div id="my-table">
+			<div class="row">
+				<div class="col-md-4">
+					<label>Season</label>
+					<%= text_field :saison, "", id: "event-id" %>
+				</div>
+				<div class="col-md-4">
+					<label>Tournoi Game</label>
+					<%= select_tag("event_game", options_for_select([["Tekken 7","t7"],["Super Smash Bros Ultimate","smbu"]])) %>
+				</div>
+				<div class="col-md-4">
+					<label>Tournoi Place</label>
+					<%= select_tag("event_place", options_for_select([["Paris", "paris"],["Lyon", "lyon"],["Marseille", "marseille"]])) %>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<%= submit_tag("Create") %>
+	<% end %>
+</div>

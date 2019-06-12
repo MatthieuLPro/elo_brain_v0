@@ -1,0 +1,83 @@
+<div class="container-fluid" align="center">
+	<h1>Ranking - Versus Fighting - France</h1>
+	<p class="subheading">Versus Fighting Esport French Progaming Statistics</p>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto navbar-center">
+      <li class="nav-item">
+        <%= link_to "Index", root_path, class: "nav-link" %>
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle dropbtn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Tekken 7
+        </a>
+        <div class="dropdown-content" aria-labelledby="navbarDropdown">
+          <!--<a class="dropdown-item" href="#">Lille</a>
+          <a class="dropdown-item" href="#">Lyon</a>
+          <a class="dropdown-item" href="#">Marseille</a>
+          <a class="dropdown-item" href="#">Paris</a>-->
+          <%= link_to "Players", rankings_players_t7_path, class: "dropdown-item" %>
+          <!--<a class="dropdown-item" href="#">Tournament</a>-->
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle dropbtn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Super Smash Bros Ultimate
+        </a>
+        <div class="dropdown-content" aria-labelledby="navbarDropdown">
+          <!--<a class="dropdown-item" href="#">Lille</a>
+          <a class="dropdown-item" href="#">Lyon</a>
+          <a class="dropdown-item" href="#">Marseille</a>
+          <a class="dropdown-item" href="#">Paris</a>
+          <a class="dropdown-item" href="#">Players</a>
+          <a class="dropdown-item" href="#">Tournament</a>-->
+          <a class="dropdown-item" href="#">Non disponible</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle dropbtn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Soul Calibur VI
+        </a>
+        <div class="dropdown-content" aria-labelledby="navbarDropdown">
+          <!--<a class="dropdown-item" href="#">Lille</a>
+          <a class="dropdown-item" href="#">Lyon</a>
+          <a class="dropdown-item" href="#">Marseille</a>
+          <a class="dropdown-item" href="#">Paris</a>
+          <a class="dropdown-item" href="#">Players</a>
+          <a class="dropdown-item" href="#">Tournament</a>-->
+          <a class="dropdown-item" href="#">Non disponible</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle dropbtn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Guilty Gear Xrd
+        </a>
+        <div class="dropdown-content" aria-labelledby="navbarDropdown">
+          <!--<a class="dropdown-item" href="#">Lille</a>
+          <a class="dropdown-item" href="#">Lyon</a>
+          <a class="dropdown-item" href="#">Marseille</a>
+          <a class="dropdown-item" href="#">Paris</a>
+          <a class="dropdown-item" href="#">Players</a>
+          <a class="dropdown-item" href="#">Tournament</a>-->
+          <a class="dropdown-item" href="#">Non disponible</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle dropbtn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Information
+        </a>
+        <div class="dropdown-content" aria-labelledby="navbarDropdown">
+          <%= link_to "Systeme Elo", informations_calcul_elo_path, class:"dropdown-item" %>
+          <%= link_to "Contact", informations_contact_path, class:"dropdown-item" %>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</nav>

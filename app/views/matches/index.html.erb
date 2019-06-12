@@ -1,0 +1,21 @@
+<div>Index Matches</div>
+<table>
+	<tr>
+		<th>Event</th>
+		<th>player 1</th>
+		<th>player 2</th>
+		<th>Result</th>
+		<th>Ordre</th>
+	</tr>
+	<% @matches.each do |matche| %>
+		<tr>
+			<td><%= Event.find(matche.event_id).tournoi_name %></td>
+			<td><%= Player.find(matche.player_1_id).nickname %></td>
+			<td><%= Player.find(matche.player_2_id).nickname %></td>
+			<td><%= matche.result %></td>
+			<td><%= matche.ordre %></td>
+			<td><%= matche.phase %></td>
+		</tr>
+	<% end %>
+</table>
+<div><%= link_to "Generate new match", new_match_path %></div>

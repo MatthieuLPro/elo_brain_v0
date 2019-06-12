@@ -1,0 +1,196 @@
+var graph = graphql("https://api.smash.gg/gql/alpha", {
+  method: "POST",
+  headers: {
+    'Authorization': `Bearer 9fa053496147829d398e6419b4c4a812`,
+    'Content-Type': 'application/json'
+  },
+  fragments: {
+    auth: "on User { token }",
+    error: "on Error { messages }"
+  }
+})
+
+function get_tournament_infos() {
+  var search_game = $("#search_game option:selected").val();
+  var search_place = $("#search_place option:selected").val();
+  get_tournaments(search_game, search_place, (Math.round((Date.now() / 1000) - 86400)));
+}
+
+function get_match_infos() {
+  var search_game = $("#search_game option:selected").val();
+  var search_place = $("#search_place option:selected").val();
+  var list_name = get_events(search_game, search_place);
+  var list_event = $("#" + list_name).val();
+  list_event = list_event.split(',');
+  list_event[0] = list_event[0].substring(1,list_event[0].length);
+  list_event[list_event.length - 1] = list_event[list_event.length - 1].substring(0,list_event[list_event.length - 1].length - 1);
+  $('#place-id').val(search_place);
+  get_matches(list_event);
+}
+
+function get_events(game, place) {
+  if (game == "t7") {
+    if (place == "paris")
+      return "paris_t7";
+    if (place == "lyon")
+      return "lyon_t7";
+    if (place == "marseille")
+      return "marseille_t7";
+  }
+  if (game == "smbu") {
+    if (place == "paris")
+      return "paris_smbu";
+    if (place == "lyon")
+      return "lyon_smbu";
+    if (place == "marseille")
+      return "marseille_smbu";
+  }
+  return false
+}
+
+function find_place(place) {
+  if (place == "paris")
+    return "48.8534,2.3488"
+  else if (place == "lyon")
+    return "45.75,4.85"
+  else if (place == "marseille")
+    return "43.3,5.4"
+  return false
+}
+
+function find_game(game) {
+  if (game == "t7")
+    return 17
+  else if (game == "smbu")
+    return 1386
+  return false
+}
+
+function get_tournaments(game, place, date) {
+  var array_tournaments_name = []
+  var array_tournaments_id = []
+  var array_tournaments_startAt = []
+  var array_tournaments_event_id = []
+  var my_place = find_place(place);
+  var my_game = find_game(game);
+  var my_date = date
+
+  if (my_place == false || my_game == false)
+    return false
+  
+  /* videogameID : 17 (T7) - 1386 (SMBU)
+   Paris : 48.8534,2.3488 - Lyon: 45.75,4.85 - Marseille: 43.3,5.4
+   Get Tournament : Name - StartAt - ID . Get Events : ID
+   Has to change values each time */
+//1546300800
+  var events = graph.query.run(`SocalTournaments {
+    tournaments(query: {
+      perPage: 1000
+      filter: {
+        location: {
+          distanceFrom: ` + "\"" + my_place + "\"" + `,
+          distance: "31mi"
+        },
+        afterDate: 1546300800,
+        beforeDate: ` + my_date + `,
+        videogameIds: ` + my_game + `
+      }
+    }) 
+    {
+      nodes {
+        id
+        name
+        startAt
+        events {
+          id
+          videogameId
+        }
+      }
+    }
+  }`)
+  events.then((data) => {
+  	var i = 0;
+  	var j = 0;
+  	while(i < data.tournaments.nodes.length)
+  	{
+  		array_tournaments_name.push(data.tournaments.nodes[i].name + "§");
+  		array_tournaments_startAt.push(data.tournaments.nodes[i].startAt);
+  		array_tournaments_id.push(data.tournaments.nodes[i].id);
+  		while(j < data.tournaments.nodes[i].events.length)
+  		{
+  			if (data.tournaments.nodes[i].events[j].videogameId == my_game)
+  				array_tournaments_event_id.push(data.tournaments.nodes[i].events[j].id);
+  			j++;
+  		}
+  		j = 0;
+  		i++;
+  	}
+  	$('#tn-name').val(array_tournaments_name);
+  	$('#tn-id').val(array_tournaments_id);
+  	$('#tn-startAt').val(array_tournaments_startAt);
+  	$('#tn-eventId').val(array_tournaments_event_id);
+    $('#tn-game').val(game);
+    $('#tn-place').val(place);
+  });
+}
+
+function get_matches(list_event) {
+  /* Get Matches : Name - StartAt - ID . Get Events : ID */
+  var array_matches_result = []
+  var array_matches_ordre = []
+  var array_matches_groupe = []
+  var array_matches_round = []
+  var array_matches_event = []
+  var i = 0
+  while(i < list_event.length) {
+    var matchs = graph.query.run(`EventSets{
+      event(id:` + list_event[i] + `){
+        id
+        name
+        sets(
+          page: 1
+          perPage: 500
+          sortType: STANDARD
+        ){
+          pageInfo{
+            total
+          }
+          nodes{
+            id
+            displayScore
+            identifier
+            phaseGroupId
+            fullRoundText
+          }
+        }
+      }
+    }`)
+
+    matchs.then((data) => {
+    	var i = 0;
+      if (data.event.sets.nodes) {
+      	while(i < data.event.sets.nodes.length)
+      	{
+      		array_matches_result.push(data.event.sets.nodes[i].displayScore);
+      		array_matches_ordre.push(data.event.sets.nodes[i].identifier);
+      		array_matches_groupe.push(data.event.sets.nodes[i].phaseGroupId);
+          array_matches_round.push(data.event.sets.nodes[i].fullRoundText);
+          array_matches_event.push(data.event.id);
+      		i++;
+      	}
+      }
+    $('#my-table-bis').append('<div>Nom: ' + array_matches_result + '</div>');
+    $('#my-table-bis').append('<div>Ordre: ' + array_matches_ordre + '</div>');
+    $('#my-table-bis').append('<div>Groupe: ' + array_matches_groupe + '</div>');
+    $('#my-table-bis').append('<div>Round: ' + array_matches_round + '</div>');
+    $('#match-result').val(array_matches_result);
+    $('#match-event-id').val(array_matches_event);
+    $('#match-ordre').val(array_matches_ordre);
+    $('#match-groupe').val(array_matches_groupe);
+    $('#match-round').val(array_matches_round);
+    });
+    i++;
+  }
+}
+
+$(document).ready();
