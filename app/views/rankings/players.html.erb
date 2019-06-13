@@ -1,11 +1,11 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-4 offset-md-4">
+		<div class="col-md-4 offset-md-2">
 			<div class="table-responsive">
 				<table class="table table-striped table-hover">
 					<thead>
 						<tr align="center">
-							<th colspan="2" style="border-top: none;">Région statistics</th>
+							<th colspan="2" style="border-top: none;">Région statistics global</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -22,16 +22,45 @@
 							<td><%= @game_statistic.get_player_all.count %></td>
 						</tr>
 						<tr>
+							<td style="border-right: 1px solid #999" align="right">Match</td>
+							<td><%= @game_statistic.get_nb_match_all %></td>
+						</tr>
+						<tr>
+							<td style="border-right: 1px solid #999" align="right">Tournois</td>
+							<td><%= @game_statistic.get_tournoi_all.count %></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="table-responsive">
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr align="center">
+							<th colspan="2" style="border-top: none;">Région statistics saison actuelle</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="border-right: 1px solid #999" align="right">Début</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td style="border-right: 1px solid #999" align="right">Last update</td>
+							<td></td>
+						</tr>
+						<tr>
 							<td style="border-right: 1px solid #999" align="right">Active players</td>
 							<td><%= @game_statistic.get_player_saison.count %></td>
 						</tr>
 						<tr>
 							<td style="border-right: 1px solid #999" align="right">Match</td>
-							<td></td>
+							<td><%= @game_statistic.get_nb_match_saison %></td>
 						</tr>
 						<tr>
 							<td style="border-right: 1px solid #999" align="right">Tournois</td>
-							<td><%= @game_statistic.get_tournoi_all.count %></td>
+							<td><%= @game_statistic.get_tournoi_saison.count %></td>
 						</tr>
 					</tbody>
 				</table>
@@ -62,7 +91,7 @@
 								<td><%= link_to player.nickname, player_path(player.id) %></td>
 								<td><%= player.team %></td>
 								<td><%= player.elos.sort.last.value.round %></td>
-								<td><%= @game_statistic.get_win_rate[player.nickname] %> %</td>
+								<td><%= @game_statistic.hash_win_rate[player.id] %> %</td>
 								<td><%= player.nb_match_saison %></td>
 								<td><%= player.nb_tournoi_saison %></td>
 								<td><%= player.nb_match_total %></td>

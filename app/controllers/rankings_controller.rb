@@ -1,13 +1,16 @@
 class RankingsController < ApplicationController
   before_action :get_players, only: [:index]
   before_action :get_events, only: [:index]
-  before_action :get_game_statistic, only: [:players]
+  before_action :get_game_statistic, only: [:players, :tournois]
 
   def index
     @ranking = RankingService.new(saison: "1")
   end
 
   def players
+  end
+
+  def tournois
   end
 
   def tournois_t7
