@@ -14,11 +14,12 @@
 						</tr>
 					</thead>
 					<tbody>
-						<% 10.times do |i| %>
+						<% @game_statistic_t7.get_player_top_10_all.each_with_index do |player, i| %>
+							<% break if i > 9 %>
 							<tr align="center">
 								<th><%= i + 1 %></td>
-								<td><%= link_to @ranking.get_top_10_t7[i].nickname, player_path(@ranking.get_top_10_t7[i].id) %></td>
-								<td><%= @ranking.get_top_10_t7[i].elos.last.value.round %></td>
+								<td><%= link_to player.nickname, player_path(player) %></td>
+								<td><%= player.elos.last.value.round %></td>
 							</tr>
 						<% end %>
 					</tbody>
