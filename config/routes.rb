@@ -5,9 +5,8 @@ Rails.application.routes.draw do
   post "/graphql", to: "graphql#execute"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root :to => 'rankings#index'
-  get "rankings/players_t7" => "rankings#players_t7"
-  get "rankings/tournois_t7" => "rankings#tournois_t7"
-  get "rankings/players_smbu" => "rankings#players_smbu"
+  get "rankings/players" => "rankings#players"
+  get "rankings/tournois" => "rankings#tournois"
 
   get "informations/calcul_elo" => "informations#calcul_elo"
   get "informations/contact" => "informations#contact"
