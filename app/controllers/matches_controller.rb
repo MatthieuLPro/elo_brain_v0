@@ -13,6 +13,7 @@ class MatchesController < ApplicationController
 		@array_paris_smbu = Array.new
 		@array_lyon_smbu = Array.new
 		@array_marseille_smbu = Array.new
+		@array_online_doa6 = Array.new
 		Event.where(tournoi_place: "paris", event_game: "t7").each do |event|
 			@array_paris_t7 << event.sgevent_id
 		end
@@ -30,6 +31,9 @@ class MatchesController < ApplicationController
 		end
 		Event.where(tournoi_place: "marseille", event_game: "smbu").each do |event|
 			@array_marseille_smbu << event.sgevent_id
+		end
+		Event.where(tournoi_place: "online", event_game: "doa6").each do |event|
+			@array_online_doa6 << event.sgevent_id
 		end
 	end
 

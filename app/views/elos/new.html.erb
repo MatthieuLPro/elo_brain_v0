@@ -21,8 +21,10 @@
 					<th>Smash Bros Ultimate</th>
 					<th>Soul Calibur</th>
 					<th>Guilty Gear</th>
+					<th>Dead or Alive 6</th>
 				</tr>
 				<tr>
+					<td>1</td>
 					<td>1</td>
 					<td>1</td>
 					<td>1</td>
@@ -43,11 +45,11 @@
 				</div>
 				<div class="col-md-4">
 					<label>Tournoi Game</label>
-					<%= select_tag("event_game", options_for_select([["Tekken 7","t7"],["Super Smash Bros Ultimate","smbu"]])) %>
+					<%= select_tag("event_game", options_for_select([["Tekken 7","t7"],["Super Smash Bros Ultimate","smbu"], ["Dead Or Alive 6", "doa6"]])) %>
 				</div>
 				<div class="col-md-4">
 					<label>Tournoi Place</label>
-					<%= select_tag("event_place", options_for_select([["Paris", "paris"],["Lyon", "lyon"],["Marseille", "marseille"]])) %>
+					<%= select_tag("event_place", options_for_select([["Paris", "paris"],["Lyon", "lyon"],["Marseille", "marseille"], ["Online", "online"]])) %>
 				</div>
 			</div>
 		</div>

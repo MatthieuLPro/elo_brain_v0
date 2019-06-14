@@ -38,11 +38,11 @@
 	<div class="row">
 		<div class="col-md-4">
 			<label>Game name:</label>
-			<%= select_tag("search_game", options_for_select([["Tekken 7","t7"],["Super Smash Bros Ultimate","smbu"],["Soul Calibur", "sc"],["Guilty Gear", "gg"]])) %>
+			<%= select_tag("search_game", options_for_select([["Tekken 7","t7"],["Super Smash Bros Ultimate","smbu"],["Soul Calibur", "sc"],["Guilty Gear", "gg"], ["Dead Or Alive 6", "doa6"]])) %>
 		</div>
 		<div class="col-md-4">
 			<label>Tournoi place:</label>
-			<%= select_tag("search_place", options_for_select([["Paris", "paris"],["Lyon", "lyon"],["Marseille", "marseille"]])) %>
+			<%= select_tag("search_place", options_for_select([["Paris", "paris"],["Lyon", "lyon"],["Marseille", "marseille"], ["Online", "online"]])) %>
 		</div>
 		<div class="col-md-4">
 			<input type="hidden" value="<%= @array_paris_t7 %>" id='paris_t7'> 
@@ -51,6 +51,7 @@
 			<input type="hidden" value="<%= @array_paris_smbu %>" id='paris_smbu'> 
 			<input type="hidden" value="<%= @array_lyon_smbu %>" id='lyon_smbu'> 
 			<input type="hidden" value="<%= @array_marseille_smbu %>" id='marseille_smbu'> 
+			<input type="hidden" value="<%= @array_online_doa6 %>" id='online_doa6'> 
 			<button onclick="get_match_infos()">Chercher</button>
 		</div>
 	</div>
