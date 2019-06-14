@@ -19,6 +19,7 @@ class RankingsController < ApplicationController
 
   def get_all_game_statistic
     @game_statistic_t7 = PlayerStatistic::Game.new(game: "t7", saison: "1", need_variable: false)
+    @game_statistic_doa6 = PlayerStatistic::Game.new(game: "doa6", saison: "1", need_variable: false)
   end
 
 end

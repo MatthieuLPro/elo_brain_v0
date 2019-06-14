@@ -1,9 +1,7 @@
 <div class="container">
 	<div class="row">
-		<h3>Top 10 - Tekken 7</h3>
-	</div>
-	<div class="row">
 		<div class="col-md-4">
+			<h3>Top 10 - Tekken 7</h3>
 			<div class="table-responsive">
 				<table class="table table-striped table-hover">
 					<thead>
@@ -26,6 +24,30 @@
 				</table>
 			</div>
 		</div>
+		<div class="col-md-4">
+			<h3>Top 10 - Dead Or Alive 6</h3>
+			<div class="table-responsive">
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr align="center">
+							<th>#</th>
+							<th>Player</th>
+							<th>Elo</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @game_statistic_doa6.get_player_top_10_all.each_with_index do |player, i| %>
+							<% break if i > 9 %>
+							<tr align="center">
+								<th><%= i + 1 %></td>
+								<td><%= link_to player.nickname, player_path(player) %></td>
+								<td><%= player.elos.last.value.round %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
 	<div class="row" align="right">
 		<div class="col-md-12">
@@ -34,12 +56,24 @@
 	</div>
 	<hr>
 	<div class="row">
-		<h3>Version Beta</h3>
+		<h3>Données Dead Or Alive 6 et rajout des informations tournois</h3>
+	</div>
+	<p class="subtext">News du 15/06/2019</p>
+	<div class="row">
+		<p>
+			Mise en forme d'une première version pour les joueurs de Dead Or Alive 6 pour les tournois online "La Bagarre Rank or Die". Les classements joueurs sont mis à jour.
+		</p>
+		<p>
+			Rajout des informations par tournoi regroupant les participants et les matches.
+		</p>
+	</div>
+	<div class="row">
+		<h3>Ouverture Version Beta</h3>
 	</div>
 	<p class="subtext">News du 12/06/2019</p>
 	<div class="row">
 		<p>
-			Mise en place d'une première version pour les joueurs de Tekken 7 de la région parisienne. Les classements joueurs sont mis à jours.
+			Mise en place d'une première version de ranking pour les joueurs de Tekken 7 de la région parisienne. Les classements joueurs sont mis à jour.
 		</p>
 	</div>
 </div>
