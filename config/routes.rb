@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get "informations/calcul_elo" => "informations#calcul_elo"
   get "informations/contact" => "informations#contact"
+  get "informations/partenaire" => "informations#partenaire"
+  get "informations/association" => "informations#association"
 
   resources :events, only: [:index, :new, :create, :show] do
     get :game
