@@ -1,6 +1,7 @@
 <div>Index Matches</div>
 <table>
 	<tr>
+		<th>id</th>
 		<th>Event</th>
 		<th>player 1</th>
 		<th>player 2</th>
@@ -10,6 +11,7 @@
 	</tr>
 	<% @matches.each do |matche| %>
 		<tr>
+			<td><%= matche.id %></td>
 			<td><%= Event.find(matche.event_id).tournoi_name %></td>
 			<td><%= Player.find(matche.player_1_id).nickname %></td>
 			<td><%= Player.find(matche.player_2_id).nickname %></td>

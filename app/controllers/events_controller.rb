@@ -125,7 +125,11 @@ class EventsController < ApplicationController
   	end
 
   	def event_matches
-  		@event_matches = Match.where(event_id: @event.id).sort_by { |matche| [matche.ordre] }
+  		if @event.event_game == "t7"
+  			@event_matches = Match.where(event_id: @event.id).sort_by { |matche| [matche.ordre] }
+  		elsif @event.event_game == "doa6"
+  			@event_matches = Match.where(event_id: @event.id).sort_by { |matche| [matche.ordre, matche.phase] }
+  		end
   	end
 
 	def verify_count
@@ -142,7 +146,7 @@ class EventsController < ApplicationController
 		if @event_matches.reverse[0].ordre > 100 && @event_matches.reverse[1].ordre > 100
 			@hash_podium["3"] = (@event_matches.reverse[2].result ? @event_matches.reverse[2].player_2_id : @event_matches.reverse[2].player_1_id)		
 		else
-			@hash_podium["3"] = (@event_matches.reverse[1].result ? @event_matches.reverse[1].player_2_id : @event_matches.reverse[1].player_1_id)		
+			@hash_podium["3"] = (@event_matches.reverse[1].result ? @event_matches.reverse[1].player_2_id : @event_matches.reverse[1].player_1_id)
 		end
 	end
 end

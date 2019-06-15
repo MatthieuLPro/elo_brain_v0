@@ -93,7 +93,7 @@ class MatchesController < ApplicationController
 		@ordre.collect!.with_index do |ordre, i|
 			result = 0
 			ordre.each_char.with_index do |char, j|
-				if @round[i] == "Grand Final Reset" || @round[i] == "Grand Final"
+				if @round[i] == "Grand Final Reset" || @round[i] == "Grand Final" || @round[i] == "Final"
 					result += ((char.ord).to_i - 64) + 100
 				else
 					result += 24 if j > 0
@@ -106,7 +106,7 @@ class MatchesController < ApplicationController
 
 	def modify_result_params
 		@result.collect! do |matche|
-			matche =  matche.split('-')
+			matche =  matche.split(' - ')
 			matche.collect! do |matche_sub|
 				player_team = ""
 				if matche_sub.last == " "
