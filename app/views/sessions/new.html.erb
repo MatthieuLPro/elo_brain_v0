@@ -1,19 +1,28 @@
-<p id="alert"><%= alert %></p>
-
-<h1>Login</h1>
-
-<%= form_tag sessions_path do |form| %>
-  <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr align="center">
+              <th colspan="2" style="border-top: none;">Connection</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="border-right: 1px solid #999" align="right">Email</td>
+              <td align="center"><%= text_field_tag :email %></td>
+            </tr>
+            <tr>
+              <td style="border-right: 1px solid #999" align="right">Last update</td>
+              <td align="center"><%= password_field_tag :password %></td>
+            </tr>
+            <tr>
+              <td colspan="2" align="center"><%= submit_tag "Connection" %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </div>
-
-  <div class="actions">
-    <%= submit_tag "Login" %>
-  </div>
-<% end %>
+</div>
