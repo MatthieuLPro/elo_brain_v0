@@ -13,6 +13,13 @@ Rails.application.routes.draw do
   get "informations/partenaire" => "informations#partenaire"
   get "informations/association" => "informations#association"
 
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :users, only: [:index, :new, :create, :show]
+
+  get 'signup', to: 'users#new', as: 'signup'
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+
   resources :events, only: [:index, :new, :create, :show] do
     get :game
   end

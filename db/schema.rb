@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_30_205811) do
+ActiveRecord::Schema.define(version: 2019_06_15_155211) do
 
   create_table "elos", force: :cascade do |t|
     t.float "value"
@@ -63,6 +63,13 @@ ActiveRecord::Schema.define(version: 2019_05_30_205811) do
     t.string "ranking_record"
     t.string "ranking_previous"
     t.string "saison_current"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

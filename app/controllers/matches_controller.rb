@@ -1,4 +1,5 @@
 class MatchesController < ApplicationController
+	before_action :authenticate, only: [:new, :create, :update]
 	before_action :get_matches, only: [:index]
 	before_action :get_match, only: [:show]
 	before_action :modify_match_params, only: [:create] 

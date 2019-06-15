@@ -1,0 +1,17 @@
+<div class="container">
+	<div class="row" style="margin-top: 3%;">
+		<div class="col-md-12">
+			<h1>Connection user</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<%= form_for @user, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+			  <%= f.text_field :email, placeholder: "Email", required: true %>
+			  <%= f.password_field :password, required: true %>
+			  <%= f.password_field :password_confirmation, required: true %>
+			  <%= f.submit "Create" %>
+			<% end %>
+		</div>
+	</div>
+</div>

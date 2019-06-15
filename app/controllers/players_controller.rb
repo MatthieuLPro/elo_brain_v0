@@ -1,4 +1,5 @@
 class PlayersController < ApplicationController
+	before_action :authenticate, only: [:new, :create, :update]
 	before_action :get_player, only: [:show]
 	before_action :get_game_statistics, only: [:index]
 

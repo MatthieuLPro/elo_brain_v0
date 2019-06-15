@@ -1,4 +1,5 @@
 class ElosController < ApplicationController
+	before_action :authenticate, only: [:new, :create, :update]
 	before_action :get_events_for_calculation, only: [:create]
 	before_action :get_players_for_calculation, only: [:create]
 	before_action :create_initial_elo, only: [:create]

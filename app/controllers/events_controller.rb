@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+	before_action :authenticate, only: [:new, :create, :edit, :update]
 	before_action :get_events, only: [:index]
 	before_action :get_event, only: [:show]
 	before_action :get_event_statistic, only: [:show]
