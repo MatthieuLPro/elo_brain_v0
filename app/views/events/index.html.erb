@@ -13,6 +13,7 @@
 	<div class="row">
 		<table class="table">
 			<tr>
+				<th>Id</th>
 				<th>Nom tournoi</th>
 				<th>Date tournoi</th>
 				<th>ID tournoi Smashgg</th>
@@ -22,9 +23,11 @@
 				<th>Game</th>
 				<th>Nb participant</th>
 				<th>Nb match</th>
+				<th>Platform</th>
 			</tr>
 			<% @events.each do |event| %>
 				<tr>
+					<td><%= event.id %></td>
 					<td><%= event.tournoi_name %></td>
 					<td><%= event.tournoi_date %></td>
 					<td><%= event.sgtournoi_id %></td>
@@ -34,6 +37,7 @@
 					<td><%= event.event_game %></td>
 					<td><%= event.nb_participant %></td>
 					<td><%= event.nb_match %></td>
+					<td><%= event.platform %></td>
 				</tr>
 			<% end %>
 		</table>

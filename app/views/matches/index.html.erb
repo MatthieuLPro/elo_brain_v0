@@ -1,24 +1,30 @@
-<div>Index Matches</div>
-<table>
-	<tr>
-		<th>id</th>
-		<th>Event</th>
-		<th>player 1</th>
-		<th>player 2</th>
-		<th>Result</th>
-		<th>Ordre</th>
-		<th>phase</th>
-	</tr>
-	<% @matches.each do |matche| %>
-		<tr>
-			<td><%= matche.id %></td>
-			<td><%= Event.find(matche.event_id).tournoi_name %></td>
-			<td><%= Player.find(matche.player_1_id).nickname %></td>
-			<td><%= Player.find(matche.player_2_id).nickname %></td>
-			<td><%= matche.result %></td>
-			<td><%= matche.ordre %></td>
-			<td><%= matche.phase %></td>
-		</tr>
-	<% end %>
-</table>
-<div><%= link_to "Generate new match", new_match_path %></div>
+<div class="container">
+	<div class="row">
+		<h1>Index Matches</h1>
+	</div>
+	<div class="row">
+		<table class="table">
+			<tr>
+				<th>id</th>
+				<th>Event</th>
+				<th>player 1</th>
+				<th>player 2</th>
+				<th>Result</th>
+				<th>Ordre</th>
+				<th>phase</th>
+			</tr>
+			<% @matches.each do |matche| %>
+				<tr>
+					<td><%= matche.id %></td>
+					<td><%= matche.event_id %></td>
+					<td><%= matche.player_1_id %></td>
+					<td><%= matche.player_2_id %></td>
+					<td><%= matche.result %></td>
+					<td><%= matche.ordre %></td>
+					<td><%= matche.phase %></td>
+				</tr>
+			<% end %>
+		</table>
+		<div><%= link_to "Generate new match", new_match_path %></div>
+	</div>
+</div>

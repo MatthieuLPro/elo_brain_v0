@@ -1,7 +1,7 @@
 var graph = graphql("https://api.smash.gg/gql/alpha", {
   method: "POST",
   headers: {
-    'Authorization': ``,
+    'Authorization': `Bearer 9fa053496147829d398e6419b4c4a812`,
     'Content-Type': 'application/json'
   },
   fragments: {
@@ -93,12 +93,12 @@ function get_tournaments(game, place, date) {
    Has to change values each time */
 //1546300800
 
-  if (place == "online") {
+  if (game == "doa6") {
     var events = graph.query.run(`TournamentsByCountry{
       tournaments(query: {
         perPage: 10
         filter: {
-          videogameIds: 3139,
+          videogameIds: ` + my_game + `,
           afterDate: 1546331198,
           beforeDate: ` + my_date + `,
           ownerId: 505333

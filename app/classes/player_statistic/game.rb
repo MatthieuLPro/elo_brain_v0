@@ -18,6 +18,14 @@ class PlayerStatistic::Game
 		player_saison
 	end
 
+	def get_player_pc
+		player_pc
+	end
+
+	def get_player_ps4
+		player_ps4
+	end
+
 	def get_player_top_10_all
 		player_top_10_all
 	end
@@ -42,6 +50,22 @@ class PlayerStatistic::Game
 			player unless player.elos.first.nil?
 		end
 		array_player.sort_by { |player| player.elos.last.value }.reverse
+	end
+
+	def player_pc
+		array_player = Player.where(game: my_game, saison_current: my_saison).select do |player|
+			next if player.elos.first.nil?
+			player if Elo.where(player_id: player.id, platform: "PC").first
+		end
+		array_player.sort_by { |player| player.elos.last.value }.reverse		
+	end
+
+	def player_ps4
+		array_player = Player.where(game: my_game, saison_current: my_saison).select do |player|
+			next if player.elos.first.nil?
+			player if Elo.where(player_id: player.id, platform: "PS4").first
+		end
+		array_player.sort_by { |player| player.elos.last.value }.reverse		
 	end
 
 	def player_top_10_all

@@ -1,9 +1,24 @@
 class EloCalculService
-	def initialize(player_1:, player_2:, result:)
+	def initialize(player_1:, player_2:, result:, platform:)
 		@nb_match_1 = player_1.elos.count
 		@nb_match_2 = player_2.elos.count
-		@elo_1 = player_1.elos.last.value
-		@elo_2 = player_2.elos.last.value
+		if platform.blank?
+			@elo_1 = player_1.elos.last.value
+			@elo_2 = player_2.elos.last.value
+		else
+			@elo_1 = player_1.elos.where(platform: platform).last
+			@elo_2 = player_2.elos.where(platform: platform).last
+			if @elo_1.nil?
+				@elo_1 = player_1.elos.last.value 
+			else
+				@elo_1 = @elo_1.value
+			end
+			if @elo_2.nil?
+				@elo_2 = player_2.elos.last.value 
+			else
+				@elo_2 = @elo_2.value
+			end
+		end
 		@result = result
 	end
 

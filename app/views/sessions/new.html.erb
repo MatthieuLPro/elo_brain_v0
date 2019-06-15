@@ -8,19 +8,21 @@
               <th colspan="2" style="border-top: none;">Connection</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td style="border-right: 1px solid #999" align="right">Email</td>
-              <td align="center"><%= text_field_tag :email %></td>
-            </tr>
-            <tr>
-              <td style="border-right: 1px solid #999" align="right">Last update</td>
-              <td align="center"><%= password_field_tag :password %></td>
-            </tr>
-            <tr>
-              <td colspan="2" align="center"><%= submit_tag "Connection" %></td>
-            </tr>
-          </tbody>
+          <%= form_tag sessions_path do |form| %>
+            <tbody>
+              <tr>
+                <td style="border-right: 1px solid #999" align="right">Email</td>
+                <td align="center"><%= text_field_tag :email %></td>
+              </tr>
+              <tr>
+                <td style="border-right: 1px solid #999" align="right">Last update</td>
+                <td align="center"><%= password_field_tag :password %></td>
+              </tr>
+              <tr>
+                <td colspan="2" align="center"><%= submit_tag "Connection" %></td>
+              </tr>
+            </tbody>
+          <% end %>
         </table>
       </div>
     </div>

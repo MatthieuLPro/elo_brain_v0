@@ -4,6 +4,14 @@ class PlayerStatistic::Individual
 		@my_saison = saison
 	end
 
+	def get_elo_pc
+		elo_pc
+	end
+
+	def get_elo_ps4
+		elo_ps4
+	end
+
 	def get_win_rate_saison
 		win_rate_saison
 	end
@@ -27,6 +35,30 @@ class PlayerStatistic::Individual
 	private
 
 	attr_reader :my_player, :my_saison
+
+	def elo_pc
+		array_elo = Array.new
+		my_player.elos.each_with_index do |elo, i|
+			if i == 0
+				array_elo << elo
+				next
+			end
+			array_elo << elo if elo.platform == "PC"
+		end
+		array_elo.sort.reverse
+	end
+
+	def elo_ps4
+		array_elo = Array.new
+		my_player.elos.each_with_index do |elo, i|
+			if i == 0
+				array_elo << elo
+				next
+			end
+			array_elo << elo if elo.platform == "PS4"
+		end
+		array_elo.sort.reverse
+	end
 
 	def win_rate_saison
 		nb_victory = 0.0

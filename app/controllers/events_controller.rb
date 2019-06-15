@@ -25,7 +25,8 @@ class EventsController < ApplicationController
 				nb_match: 0,
 				event_game: params[:event_game][0],
 				tournoi_place: params[:tournoi_place][0],
-				saison: params[:saison][0])
+				saison: params[:saison][0],
+				platform: @platform[i])
 				return root_path
 			end
 		end
@@ -56,6 +57,14 @@ class EventsController < ApplicationController
 		@tournoi_date = params[:tournoi_date][0].split(',')
 		@sgtournoi_id = params[:sgtournoi_id][0].split(',')
 		@sgevent_id = params[:sgevent_id][0].split(',')
+		@platform = Array.new
+		@tournoi_name.each do |tournoi_name|
+			if tournoi_name.include? "PC"
+				@platform << "PC"
+			else
+				@platform << "PS4"
+			end
+		end
 	end
 
 	def get_events

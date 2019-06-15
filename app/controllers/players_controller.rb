@@ -30,6 +30,7 @@ class PlayersController < ApplicationController
 
 	def get_player
 		@player = Player.find(params[:id])
+		@game = @player.game
 		@player_statistic = PlayerStatistic::Individual.new(player: @player, saison: @player.saison_current)
 	end
 end

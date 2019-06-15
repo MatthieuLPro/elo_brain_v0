@@ -10,6 +10,7 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.integer :nb_match
     	t.string :event_game
       t.string :saison
+      t.string :platform
       t.timestamps
     end
   end
