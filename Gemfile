@@ -38,6 +38,7 @@ gem 'graphqljs-rails'
 gem 'jquery-rails'
 gem 'filterrific'
 gem 'gon'
+gem 'rspec-rails', '~> 3.8'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
