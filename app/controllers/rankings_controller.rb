@@ -14,7 +14,8 @@ class RankingsController < ApplicationController
   private
 
   def get_game_statistic
-    @game_statistic = PlayerStatistic::Game.new(game: params[:game], saison: "1", need_variable: true)
+    @game_player_statistic = PlayerStatistic::Game.new(game: params[:game], saison: "1", need_variable: true)
+    @game_tournoi_statistic = TournamentStatistic::Game.new(game: params[:game], saison: "1")
   end
 
   def get_all_game_statistic

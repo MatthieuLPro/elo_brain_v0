@@ -19,11 +19,11 @@
 						</tr>
 						<tr>
 							<td style="border-right: 1px solid #999" align="right">Nombre participant</td>
-							<td><%= @nb_participant %></td>
+							<td><%= @tournoi_statistic.get_nb_players %></td>
 						</tr>
 						<tr>
 							<td style="border-right: 1px solid #999" align="right">Nombre de match</td>
-							<td><%= @nb_match %></td>
+							<td><%= @tournoi_statistic.get_nb_matches %></td>
 						</tr>
 					</tbody>
 				</table>
@@ -44,12 +44,12 @@
 						</tr>
 					</thead>
 					<tbody>
-						<% @array_participant.each do |participant| %>
+						<% @tournoi_statistic.get_players.each do |player| %>
 							<tr align="center">
-								<td><%= participant.nickname %></td>
-								<td><%= participant.team %></td>
-								<td><%= @hash_match_participant[participant.id] %></td>
-								<td><%= @hash_victory_participant[participant.id] %> %</td>
+								<td><%= player.nickname %></td>
+								<td><%= player.team %></td>
+								<td><%= @tournoi_statistic.hash_match[player.id] %></td>
+								<td><%= @tournoi_statistic.hash_wr[player.id] %> %</td>
 							</tr>
 						<% end %>
 					</tbody>
@@ -67,7 +67,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<% @event_matches.each do |matche| %>
+						<% @tournoi_statistic.get_matches.each do |matche| %>
 							<tr align="center">
 								<% if matche.result %>
 									<td style="background-color: green;">

@@ -51,8 +51,7 @@ class PlayerStatistic::Individual
 	def rival_saison
 		hash_rival = Hash.new
 		my_player.elos.each do |elo|
-			next if elo.match_id == 0
-			next if elo.saison == my_saison
+			next if elo.match_id == 0 || elo.saison == my_saison
 			matche = Match.find(elo.match_id)
 			if Player.find(matche.player_1_id).nickname == my_player.nickname
 				adversaire = Player.find(matche.player_2_id).nickname

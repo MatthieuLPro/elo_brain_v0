@@ -7,7 +7,7 @@ class PlayerStatistic::Game
 	end
 
 	def get_variable
-		@hash_win_rate = win_rate_per_player
+		@hash_win_rate = per_player_win_rate
 	end
 
 	def get_player_all
@@ -26,39 +26,9 @@ class PlayerStatistic::Game
 		player_top_10_saison
 	end
 
-	def get_tournoi_all
-		tournoi_all
-	end
-
-	def get_tournoi_saison
-		tournoi_saison
-	end
-
-	def get_nb_match_all
-		nb_match_all
-	end
-
-	def get_nb_match_saison
-		nb_match_saison
-	end
-
 	private
 
 	attr_reader :my_game, :my_saison
-
-	def tournoi_all
-		array_tournoi = Event.where(event_game: my_game).select do |tournoi|
-			tournoi unless tournoi.matches.first.nil?
-		end
-		array_tournoi
-	end
-
-	def tournoi_saison
-		array_tournoi = Event.where(event_game: my_game, saison: my_saison).select do |tournoi|
-			tournoi unless tournoi.matches.first.nil?	
-		end
-		array_tournoi
-	end
 
 	def player_all
 		array_player = Player.where(game: my_game).select do |player|
@@ -89,25 +59,7 @@ class PlayerStatistic::Game
 		top_10.reverse
 	end
 
-	def nb_match_all
-		nb_match = 0
-		array_tournoi = Event.where(event_game: my_game).each do |tournoi|
-			next if tournoi.matches.first.nil?
-			nb_match += tournoi.matches.all.count
-		end
-		nb_match
-	end
-
-	def nb_match_saison
-		nb_match = 0
-		array_tournoi = Event.where(event_game: my_game, saison: my_saison).each do |tournoi|
-			next if tournoi.matches.first.nil?
-			nb_match += tournoi.matches.all.count
-		end
-		nb_match
-	end
-
-	def win_rate_per_player
+	def per_player_win_rate
 	    hash_win_rate = Hash.new
 	    winRate = 0.0
 	    nb_victory = 0.0
@@ -123,5 +75,4 @@ class PlayerStatistic::Game
 	    end
 	    hash_win_rate
 	end
-
 end
