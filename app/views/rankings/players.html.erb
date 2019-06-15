@@ -98,8 +98,23 @@
 					<tbody>
 					<% if @game == "doa6" %>
 						<% @game_player_statistic.get_player_pc.each_with_index do |player, i| %>
+							<% if i == 0 %>
+								<tr align="center"><td colspan="9" style="background-color: white;"><h4>League Master</h4></td></tr>
+							<% elsif i == 10 %>
+								<tr align="center"><td colspan="9" style="background-color: white;"><h4>League Initiate</h4></td></tr>
+							<% elsif i == 20 %>
+								<tr align="center"><td colspan="9" style="background-color: white;"><h4>League Beginner</h4></td></tr>							 
+							<% end %>
 							<tr align="center">
-								<td><%= i + 1 %></td>
+								<td>
+									<% if i >= 20 %>
+										<%= i + 1 - 20 %>
+									<% elsif i >= 10 %>
+										<%= i + 1 - 10 %>
+									<% else %>
+										<%= i + 1 %>
+									<% end %>
+								</td>
 								<td><%= link_to player.nickname, player_path(player.id) %></td>
 								<td><%= player.team %></td>
 								<td><%= player.elos.sort.last.value.round %></td>
@@ -150,8 +165,19 @@
 						</thead>
 						<tbody>
 							<% @game_player_statistic.get_player_ps4.each_with_index do |player, i| %>
+								<% if i == 0 %>
+									<tr align="center"><td colspan="9" style="background-color: white;"><h4>League Master</h4></td></tr>
+								<% elsif i == 10 %>
+									<tr align="center"><td colspan="9" style="background-color: white;"><h4>League Initiate</h4></td></tr>
+								<% end %>
 								<tr align="center">
-									<td><%= i + 1 %></td>
+									<td>
+										<% if i >= 10 %>
+											<%= i + 1 - 10 %>
+										<% else %>
+											<%= i + 1 %>
+										<% end %>
+									</td>
 									<td><%= link_to player.nickname, player_path(player.id) %></td>
 									<td><%= player.team %></td>
 									<td><%= player.elos.sort.last.value.round %></td>
