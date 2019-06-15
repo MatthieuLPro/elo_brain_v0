@@ -12,7 +12,14 @@
 						<%= image_tag "vsfe_logo.png", alt: 'VSFE Logo', style: "max-width: 80%; max-height: 80%;" %>
 					</div>
 				</div>
+				<div class="nav-item">
+		          <% if current_user %>
+		            <%= link_to "Deconnection", logout_path, class: "nav-link" %>
+		          <% else %>
+		            <%= link_to "Connection", login_path, class: "nav-link" %>
+		          <% end %>
+		        </div>
 			</footer>
 		</div>
 	</div>
-</div>
+</div>a
