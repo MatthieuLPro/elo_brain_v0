@@ -89,10 +89,11 @@
 							<th>Team</th>
 							<th>Elo</th>
 							<th>Win Rate</th>
-							<th>Total match saison</th>
-							<th>Total tournoi saison</th>
+							<!--<th>Total match saison</th>
+							<th>Total tournoi saison</th>-->
 							<th>Total match</th>
 							<th>Total tournoi</th>
+							<th>Evolution</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -119,10 +120,19 @@
 								<td><%= player.team %></td>
 								<td><%= player.elos.sort.last.value.round %></td>
 								<td><%= @game_player_statistic.hash_win_rate[player.id] %> %</td>
-								<td><%= player.nb_match_saison %></td>
-								<td><%= player.nb_tournoi_saison %></td>
+								<!--<td><%= player.nb_match_saison %></td>
+								<td><%= player.nb_tournoi_saison %></td>-->
 								<td><%= player.nb_match_total %></td>
 								<td><%= player.nb_tournoi_total %></td>
+								<td>
+									<% if player.ranking_previous.to_i > i + 1 %>
+										<i class="fa fa-arrow-circle-up" style="color: green;"></i>
+									<% elsif player.ranking_previous.to_i < i + 1 %>
+										<i class="fa fa-arrow-circle-down" style="color: red;"></i>
+									<% else %>
+										<i class="fa fa-minus" style="color: black;"></i>
+									<% end %>
+								</td>
 							</tr>
 						<% end %>
 					<% else %>
@@ -133,10 +143,19 @@
 								<td><%= player.team %></td>
 								<td><%= player.elos.sort.last.value.round %></td>
 								<td><%= @game_player_statistic.hash_win_rate[player.id] %> %</td>
-								<td><%= player.nb_match_saison %></td>
-								<td><%= player.nb_tournoi_saison %></td>
+								<!--<td><%= player.nb_match_saison %></td>
+								<td><%= player.nb_tournoi_saison %></td>-->
 								<td><%= player.nb_match_total %></td>
 								<td><%= player.nb_tournoi_total %></td>
+								<td>
+									<% if player.ranking_previous.to_i > i + 1 %>
+										<i class="fa fa-arrow-circle-up" style="color: green;"></i>
+									<% elsif player.ranking_previous.to_i < i + 1 %>
+										<i class="fa fa-arrow-circle-down" style="color: red;"></i>
+									<% else %>
+										<i class="fa fa-minus" style="color: black;"></i>
+									<% end %>
+								</td>
 							</tr>
 						<% end %>
 					<% end %>
@@ -157,10 +176,11 @@
 								<th>Team</th>
 								<th>Elo</th>
 								<th>Win Rate</th>
-								<th>Total match saison</th>
-								<th>Total tournoi saison</th>
+								<!--<th>Total match saison</th>
+								<th>Total tournoi saison</th>-->
 								<th>Total match</th>
 								<th>Total tournoi</th>
+								<th>Evolution</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -182,10 +202,19 @@
 									<td><%= player.team %></td>
 									<td><%= player.elos.sort.last.value.round %></td>
 									<td><%= @game_player_statistic.hash_win_rate[player.id] %> %</td>
-									<td><%= player.nb_match_saison %></td>
-									<td><%= player.nb_tournoi_saison %></td>
+									<!--<td><%= player.nb_match_saison %></td>
+									<td><%= player.nb_tournoi_saison %></td>-->
 									<td><%= player.nb_match_total %></td>
 									<td><%= player.nb_tournoi_total %></td>
+									<td>
+										<% if player.ranking_previous.to_i > i + 1 %>
+											<i class="fa fa-arrow-circle-up" style="color: green;"></i>
+										<% elsif player.ranking_previous.to_i < i + 1 %>
+											<i class="fa fa-arrow-circle-down" style="color: red;"></i>
+										<% else %>
+											<i class="fa fa-minus" style="color: black;"></i>
+										<% end %>
+									</td>
 								</tr>
 							<% end %>
 						</tbody>

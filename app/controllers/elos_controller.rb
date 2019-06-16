@@ -16,6 +16,14 @@ class ElosController < ApplicationController
 
 	def create
 		redirect_to new_elo_path unless @events
+		hash_player = Hash.new
+		Player.where(game: params[:event_game]).each do |player|
+			hash_player[player.id] = player.elos.last
+		end
+		hash_player = hash_player.sort_by { |key, value| value }
+		hash_player.each_with_index do |(key, value), i|
+			Player.find(key).update(ranking_previous: i + 1)
+		end
 		player_array = Array.new
 		@events.reverse.each do |event|
 			matches = event.matches.all.sort_by { |matche| [matche.phase, matche.ordre] }
