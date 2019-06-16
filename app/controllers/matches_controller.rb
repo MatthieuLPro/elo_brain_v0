@@ -145,8 +145,8 @@ class MatchesController < ApplicationController
 					nb_match_total: 0, nb_tournoi_total: 0,
 					nb_match_saison: 0, nb_tournoi_saison: 0,
 					place: params[:place][0],
-					ranking_record: 0,
-					ranking_previous: 0,
+					ranking_previous_pc: 1,
+					ranking_previous_ps4: 1,
 					saison_current: params[:season][0])
 			end
 		end 

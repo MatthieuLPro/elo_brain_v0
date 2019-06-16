@@ -13,7 +13,7 @@ var graph = graphql("https://api.smash.gg/gql/alpha", {
 function get_tournament_infos() {
   var search_game = $("#search_game option:selected").val();
   var search_place = $("#search_place option:selected").val();
-  get_tournaments(search_game, search_place, (Math.round((Date.now() / 1000) - 86400)));
+  get_tournaments(search_game, search_place, (Math.round((Date.now() / 1000) + 43200)));
 }
 
 function get_match_infos() {
@@ -94,6 +94,7 @@ function get_tournaments(game, place, date) {
 //1546300800
 
   if (game == "doa6") {
+    console.log(my_date);
     var events = graph.query.run(`TournamentsByCountry{
       tournaments(query: {
         perPage: 10

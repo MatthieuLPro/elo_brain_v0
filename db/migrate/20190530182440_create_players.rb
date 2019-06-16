@@ -9,8 +9,8 @@ class CreatePlayers < ActiveRecord::Migration[5.2]
       t.integer :nb_match_saison
       t.integer :nb_tournoi_saison
       t.string :place
-      t.string :ranking_record
-      t.string :ranking_previous
+      t.string :ranking_previous_pc
+      t.string :ranking_previous_ps4
       t.string :saison_current
       t.timestamps
     end

@@ -16,13 +16,23 @@ class ElosController < ApplicationController
 
 	def create
 		redirect_to new_elo_path unless @events
-		hash_player = Hash.new
+		hash_player_pc = Hash.new
+		hash_player_ps4 = Hash.new
 		Player.where(game: params[:event_game]).each do |player|
-			hash_player[player.id] = player.elos.last
+			if player.elos.where(platform: "PC").last
+				hash_player_pc[player.id] = player.elos.where(platform: "PC").last.value
+			end
+			if player.elos.where(platform: "PS4").last
+				hash_player_ps4[player.id] = player.elos.where(platform: "PS4").last.value
+			end
 		end
-		hash_player = hash_player.sort_by { |key, value| value }
-		hash_player.each_with_index do |(key, value), i|
-			Player.find(key).update(ranking_previous: i + 1)
+		hash_player_pc = hash_player_pc.sort_by { |key, value| value }.reverse
+		hash_player_ps4 = hash_player_ps4.sort_by { |key, value| value }.reverse
+		hash_player_pc.each_with_index do |(key, value), i|
+			Player.find(key).update(ranking_previous_pc: i + 1)
+		end
+		hash_player_ps4.each_with_index do |(key, value), i|
+			Player.find(key).update(ranking_previous_ps4: i + 1)
 		end
 		player_array = Array.new
 		@events.reverse.each do |event|
