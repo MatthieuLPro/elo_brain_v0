@@ -148,9 +148,9 @@
 								<td><%= player.nb_match_total %></td>
 								<td><%= player.nb_tournoi_total %></td>
 								<td>
-									<% if player.ranking_previous.to_i > i + 1 %>
+									<% if player.ranking_previous_ps4.to_i > i + 1 %>
 										<i class="fa fa-arrow-circle-up" style="color: green;"></i>
-									<% elsif player.ranking_previous.to_i < i + 1 %>
+									<% elsif player.ranking_previous_ps4.to_i < i + 1 %>
 										<i class="fa fa-arrow-circle-down" style="color: red;"></i>
 									<% else %>
 										<i class="fa fa-minus" style="color: black;"></i>
