@@ -1,27 +1,51 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-4">
-			<h3>Top 10 - Dead Or Alive 6</h3>
-			<div class="table-responsive">
-				<table class="table table-striped table-hover">
-					<thead>
-						<tr align="center">
-							<th>#</th>
-							<th>Player</th>
-							<th>Elo</th>
-						</tr>
-					</thead>
-					<tbody>
-						<% @game_statistic_doa6.get_player_top_10_all.each_with_index do |player, i| %>
-							<% break if i > 9 %>
+			<div class="row">
+				<h3>Top 5 - Dead Or Alive 6 - PC</h3>
+				<div class="table-responsive">
+					<table class="table table-striped table-hover">
+						<thead>
 							<tr align="center">
-								<th><%= i + 1 %></td>
-								<td><%= link_to player.nickname, player_path(player) %></td>
-								<td><%= player.elos.last.value.round %></td>
+								<th>#</th>
+								<th>Player</th>
+								<th>Elo</th>
 							</tr>
-						<% end %>
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							<% @game_statistic_doa6.get_player_pc.each_with_index do |player, i| %>
+								<% break if i > 4 %>
+								<tr align="center">
+									<th><%= i + 1 %></td>
+									<td><%= link_to player.nickname, player_path(player) %></td>
+									<td><%= player.elos.last.value.round %></td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+				<h3>Top 5 - Dead Or Alive 6 - PS4</h3>
+				<div class="table-responsive">
+					<table class="table table-striped table-hover">
+						<thead>
+							<tr align="center">
+								<th>#</th>
+								<th>Player</th>
+								<th>Elo</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @game_statistic_doa6.get_player_ps4.each_with_index do |player, i| %>
+								<% break if i > 4 %>
+								<tr align="center">
+									<th><%= i + 1 %></td>
+									<td><%= link_to player.nickname, player_path(player) %></td>
+									<td><%= player.elos.last.value.round %></td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 		<div class="col-md-4">
