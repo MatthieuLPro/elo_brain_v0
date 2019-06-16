@@ -32,5 +32,12 @@ class PlayersController < ApplicationController
 		@player = Player.find(params[:id])
 		@game = @player.game
 		@player_statistic = PlayerStatistic::Individual.new(player: @player, saison: @player.saison_current)
+		@platform = ""
+		@platform = "pc" if @player_statistic.get_elo_pc.count > 2
+		if @player_statistic.get_elo_ps4.count > 2 && @platform == ""
+			@platform = "ps4" 
+		elsif @player_statistic.get_elo_ps4.count > 2
+			@platform = "pc & ps4"
+		end
 	end
 end
