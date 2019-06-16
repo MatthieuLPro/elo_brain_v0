@@ -9,12 +9,12 @@ class EloCalculService
 			@elo_1 = player_1.elos.where(platform: platform).last
 			@elo_2 = player_2.elos.where(platform: platform).last
 			if @elo_1.nil?
-				@elo_1 = player_1.elos.last.value 
+				@elo_1 = player_1.elos.find_by(platform: "").value
 			else
 				@elo_1 = @elo_1.value
 			end
 			if @elo_2.nil?
-				@elo_2 = player_2.elos.last.value 
+				@elo_2 = player_2.elos.find_by(platform: "").value
 			else
 				@elo_2 = @elo_2.value
 			end
