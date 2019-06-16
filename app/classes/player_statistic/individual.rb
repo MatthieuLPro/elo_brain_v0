@@ -97,6 +97,7 @@ class PlayerStatistic::Individual
 	end
 
 	def rival_total
+		return false unless my_player.elos.count > 5
 		hash_rival = Hash.new
 		my_player.elos.each do |elo|
 			next if elo.match_id == 0
