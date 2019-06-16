@@ -86,17 +86,38 @@ class PlayerStatistic::Game
 	def per_player_win_rate
 	    hash_win_rate = Hash.new
 	    winRate = 0.0
-	    nb_victory = 0.0
-	    player_all.each do |player|
+	    nb_victory_pc = 0.0
+	    nb_victory_ps4 = 0.0
+		player_all.each do |player|
+		  next if player.elos.count == 1
 	      player.elos.each_with_index do |elo, i|
 	        next if elo.match_id == 0
-	        nb_victory += elo.value - player.elos.sort[i - 1].value < 0 ? 0 : 1
+	        j = (player.elos.count) - (i + 1)
+	        array_elo = player.elos.reverse.drop(j)
+	        if elo.platform == "PC"
+	       		nb_victory_pc += find_nb_victory(array_elo, elo, "PC")
+	        else
+	        	nb_victory_ps4 += find_nb_victory(array_elo, elo, "PS4")
+	        end
 	      end
-	      winRate = ((nb_victory / (player.elos.count - 1)) * 100).round
+	      winRate = (((nb_victory_pc + nb_victory_ps4) / (player.elos.count - 1)) * 100).round
 	      hash_win_rate[player.id] = winRate
-	      nb_victory = 0.0
+	      nb_victory_pc = 0.0
+	      nb_victory_ps4 = 0.0
 	      winRate = 0.0
 	    end
 	    hash_win_rate
+	end
+
+	def find_nb_victory(elo_array, elo_after, platform)
+	    elo_array.each_with_index do |elo_before, i|
+			next if elo_after == elo_before
+			if elo_before.platform == platform || elo_before.platform == ""
+				return 0 if elo_after.value - elo_before.value < 0
+				return 1
+				break
+			end
+		end
+		return 0
 	end
 end
