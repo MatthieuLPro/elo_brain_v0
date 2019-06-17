@@ -1,17 +1,12 @@
-<hr>
-
-<div class="container">
-	<div class="row" align="center">
-		<div class="col-md-12">
-			<footer class="text-muted small">
-				<p>Retrouvez nous sur <%= link_to "Discord", "https://discord.gg/fybPARR" %>.</p>
-				<p>Développé à l'aide de l'API Smash.gg.</p>
-				<div class="row" align="center">
-					<div class="col-md-2 offset-md-5">
-						<%= image_tag "vsfe_logo.png", alt: 'VSFE Logo', style: "max-width: 80%; max-height: 80%;" %>
-					</div>
-				</div>
-			</footer>
-		</div>
+<footer>
+	<div class="">
+		<p>Retrouvez nous sur <%= link_to "Discord", "https://discord.gg/fybPARR" %>.</p>
+		<p>Développé à l'aide de l'API Smash.gg.</p>
+		<p>Logo par: <%= link_to "Seb Arts", "https://www.behance.net/sebastienarts/info" %></p>
 	</div>
-</div>
+
+	<div class="footer-bottom text-center">
+		<%= image_tag "vsfe8.png", alt: 'VSFE Logo', class: "logo" %>
+		<p>VSFE - 2019 - &copy; Tous droits résérvés - <%= link_to "Crédit et mentions légales" %> </p>
+	</div>
+</footer>
