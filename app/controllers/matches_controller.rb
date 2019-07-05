@@ -8,13 +8,14 @@ class MatchesController < ApplicationController
 	end
 
 	def new
-		@array_paris_t7 = Array.new
-		@array_lyon_t7 = Array.new
-		@array_marseille_t7 = Array.new
-		@array_paris_smbu = Array.new
-		@array_lyon_smbu = Array.new
-		@array_marseille_smbu = Array.new
-		@array_online_doa6 = Array.new
+		@array_paris_t7 = []
+		@array_lyon_t7 = []
+		@array_marseille_t7 = []
+		@array_paris_smbu = []
+		@array_lyon_smbu = []
+		@array_marseille_smbu = []
+		@array_online_doa6 = []
+		@array_paris_mk11 = []
 		Event.where(tournoi_place: "paris", event_game: "t7").each do |event|
 			@array_paris_t7 << event.sgevent_id
 		end
@@ -36,19 +37,23 @@ class MatchesController < ApplicationController
 		Event.where(tournoi_place: "online", event_game: "doa6").each do |event|
 			@array_online_doa6 << event.sgevent_id
 		end
+		Event.where(tournoi_place: "paris", event_game: "mk11").each do |event|
+			@array_paris_mk11 << event.sgevent_id
+		end
 	end
 
 	def show
 	end
 
 	def create
-		array_player = Array.new
-		array_match = Array.new
-		array_event = Array.new
+		array_player = []
+		array_match = []
+		array_event = []
 		modify_result_params
 		modify_order_params
 		create_player
 		@phase.each_with_index do |phase, i|
+			next if @result[i].nil?
 			next if @result[i].empty?
 			next if @result[i][0][2] == "DQ"
 			next if @result[i][1][2] == "DQ"
@@ -63,7 +68,7 @@ class MatchesController < ApplicationController
 			array_event << matche.event_id unless array_event.include? matche.event_id
 		end
 		array_event.each do |id|
-			array_participant = Array.new
+			array_participant = []
 			my_matches = array_match.select { |matche| matche.event_id == id }
 			my_matches.each do |matche|
 				array_participant << matche.player_1_id unless array_participant.include? matche.player_1_id

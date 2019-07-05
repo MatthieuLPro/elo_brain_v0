@@ -1,7 +1,7 @@
 var graph = graphql("https://api.smash.gg/gql/alpha", {
   method: "POST",
   headers: {
-    'Authorization': ``,
+    'Authorization': `Bearer 9fa053496147829d398e6419b4c4a812`,
     'Content-Type': 'application/json'
   },
   fragments: {
@@ -50,6 +50,9 @@ function get_events(game, place) {
     if (place == "online")
       return "online_doa6"
   }
+  if (game == "mk11") {
+    return "paris_mk11";
+  }
   return false
 }
 
@@ -72,6 +75,8 @@ function find_game(game) {
     return 1386
   else if (game == "doa6")
     return 3139
+  else if (game == "mk11")
+    return 3200
   return false
 }
 
@@ -117,6 +122,35 @@ function get_tournaments(game, place, date) {
       }
     }`)
   }
+  else if (game == "mk11") {
+    var events = graph.query.run(`SocalTournaments {
+      tournaments(query: {
+        perPage: 1000
+        filter: {
+          ownerId: 333983,
+          videogameIds: ` + my_game + `,
+          location: {
+            distanceFrom: ` + "\"" + my_place + "\"" + `,
+            distance: "31mi"
+          },
+          afterDate: 1556697600,
+          beforeDate: ` + my_date + `,
+        }
+      }) 
+      {
+        nodes {
+          id
+          name
+          ownerId
+          startAt
+          events {
+            id
+            videogameId
+          }
+        }
+      }
+    }`)
+  }
   else {
     var events = graph.query.run(`SocalTournaments {
       tournaments(query: {
@@ -145,6 +179,7 @@ function get_tournaments(game, place, date) {
     }`)
   }
 
+  console.log(events);
   events.then((data) => {
   	var i = 0;
   	var j = 0;
