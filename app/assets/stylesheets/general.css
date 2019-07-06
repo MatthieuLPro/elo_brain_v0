@@ -25,7 +25,9 @@ li {
   color: #999;
   font-size: 0.8em;
 }
-
+.small {
+  font-size: 0.8em;
+}
 /* Footer */
 footer {
   background-color: #eee;
@@ -35,6 +37,14 @@ footer {
 }
 footer a {
   color: #000;
+}
+footer i {
+  font-size: 2em;
+  color: rgba(23, 37, 75, 0.8);
+  margin: 0 10px;
+}
+footer i:hover {
+  color: rgba(23, 37, 75, 1);
 }
 footer .footer-cols {
   display: grid;
