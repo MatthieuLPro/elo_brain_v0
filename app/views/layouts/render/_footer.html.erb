@@ -1,9 +1,9 @@
 <footer class="text-muted small">
     <p>Retrouvez nous sur <%= link_to "notre site", "http://www.versusfightingesport.org" %> et nos reseaux sociaux</p>
-    <i class="fab fa-facebook-square"></i>
-    <i class="fab fa-twitter-square"></i>
-    <i class="fab fa-discord"></i>
-    <i class="fab fa-instagram"></i>
+    <%= link_to raw("<i class='fab fa-facebook-square'></i>"), 'https://www.facebook.com/VSFightingEsport' %>
+    <%= link_to raw("<i class='fab fa-twitter-square'></i>"), 'https://twitter.com/VSFEsport' %>
+    <%= link_to raw("<i class='fab fa-discord'></i>"), 'https://discordapp.com/fybPARR' %>
+    <%= link_to raw("<i class='fab fa-instagram'></i>"), 'https://www.instagram.com/vsf_esport/' %>
     <hr>
     <p>Développé à l'aide de l'API Smash.gg</p>
     <p>Logo par: <%= link_to "Seb Arts", "https://www.behance.net/sebastienarts/info" %></p>

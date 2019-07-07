@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2019_06_15_155211) do
     t.integer "player_id"
     t.integer "match_id"
     t.string "saison"
+    t.string "platform"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["match_id"], name: "index_elos_on_match_id"
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_06_15_155211) do
     t.integer "nb_match"
     t.string "event_game"
     t.string "saison"
+    t.string "platform"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -60,8 +62,8 @@ ActiveRecord::Schema.define(version: 2019_06_15_155211) do
     t.integer "nb_match_saison"
     t.integer "nb_tournoi_saison"
     t.string "place"
-    t.string "ranking_record"
-    t.string "ranking_previous"
+    t.string "ranking_previous_pc"
+    t.string "ranking_previous_ps4"
     t.string "saison_current"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
