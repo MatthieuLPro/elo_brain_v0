@@ -1,12 +1,25 @@
-<footer>
-	<div class="">
-		<p>Retrouvez nous sur <%= link_to "Discord", "https://discord.gg/fybPARR" %>.</p>
-		<p>Développé à l'aide de l'API Smash.gg.</p>
-		<p>Logo par: <%= link_to "Seb Arts", "https://www.behance.net/sebastienarts/info" %></p>
-	</div>
-
-	<div class="footer-bottom text-center">
-		<%= image_tag "vsfe8.png", alt: 'VSFE Logo', class: "logo" %>
+<footer class="text-muted small">
+    <p>Retrouvez nous sur <%= link_to "notre site", "http://www.versusfightingesport.org" %> et nos reseaux sociaux</p>
+    <i class="fab fa-facebook-square"></i>
+    <i class="fab fa-twitter-square"></i>
+    <i class="fab fa-discord"></i>
+    <i class="fab fa-instagram"></i>
+    <hr>
+    <p>Développé à l'aide de l'API Smash.gg</p>
+    <p>Logo par: <%= link_to "Seb Arts", "https://www.behance.net/sebastienarts/info" %></p>
+    <div class="nav-item">
+        <% if current_user %>
+        <%= link_to "Deconnection", logout_path, class: "nav-link" %>
+        <% else %>
+        <%= link_to "Connection", login_path, class: "nav-link" %>
+        <% end %>
+    </div>
+    
+    <div class="footer-bottom text-center">
+        <div class="col-md-2 offset-md-5">
+           <%= link_to image_tag("vsfe8.png", alt: "VSFE Logo", class: "logo"), "http://www.versusfightingesport.org" %>
+        </div>
+		
 		<p>VSFE - 2019 - &copy; Tous droits résérvés - <%= link_to "Crédit et mentions légales" %> </p>
 	</div>
 </footer>
