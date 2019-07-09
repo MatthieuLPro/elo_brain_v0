@@ -7,11 +7,11 @@
     <hr>
     <p>Développé à l'aide de l'API Smash.gg</p>
     <p>Logo par: <%= link_to "Seb Arts", "https://www.behance.net/sebastienarts/info" %></p>
-    <div class="nav-item">
+    <div class="">
         <% if current_user %>
-        <%= link_to "Deconnection", logout_path, class: "nav-link" %>
+        <%= link_to "Deconnection", logout_path, class: "" %>
         <% else %>
-        <%= link_to "Connection", login_path, class: "nav-link" %>
+        <%= link_to "Connection", login_path, class: "" %>
         <% end %>
     </div>
     

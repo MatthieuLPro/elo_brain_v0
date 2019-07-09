@@ -1,112 +1,54 @@
-<div class="container-fluid" align="center">
-<%= image_tag "vsfe5.png", class: "logo" %>
+<nav class="navbar">
+<%= link_to image_tag("vsfe5.png", class: "logo"), root_path %>
+<!-- Button menu -->
+    <div class="menu-btn">
+        <div class="btn-line"></div>
+        <div class="btn-line"></div>
+        <div class="btn-line"></div>
+    </div>
+
+    <div class="menu">
+        <div class="menu-branding">
+            <div class="vsfe-logo">
+              <%= link_to image_tag("vsfe4.png", class: "logo"), root_path %>
+            </div>
+            <div>
+            <div class="btn">Login</div>
+            <div class="btn">Sign up</div>
+            </div>
+        </div>
+        <ul class="menu-nav">
+         <li class="nav-item">
+            <a href="" class="nav-link">
+             Home
+            </a>
+         </li>
+         <li class="nav-item">
+            <a href="" class="nav-link">
+             Games
+            </a>
+         </li>
+         <li class="nav-item">
+            <a href="" class="nav-link">
+             Tournaments
+            </a>
+         </li>
+         <li class="nav-item">
+            <a href="" class="nav-link">
+             Info
+            </a>
+         </li>
+        </ul>
+        <div class="navbar-icons" >
+        <%= link_to raw("<i class='fab fa-facebook-square'></i>"), 'https://www.facebook.com/VSFightingEsport' %>
+        <%= link_to raw("<i class='fab fa-twitter-square'></i>"), 'https://twitter.com/VSFEsport' %>
+        <%= link_to raw("<i class='fab fa-discord'></i>"), 'https://discord.gg/fybPARR' %>
+        <%= link_to raw("<i class='fab fa-instagram'></i>"), 'https://www.instagram.com/vsf_esport/' %>
+        </div>
+    </div>
+   
+
+</nav>
+<div class="navbar-title" align="center">
 	<p class="subheading">Versus Fighting Esport French Progaming Statistics</p>
 </div>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <div class="nav-table">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <%= link_to "Index", root_path, class: "nav-link" %>
-          </a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle dropbtn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dead Or Alive 6
-          </a>
-          <div class="dropdown-content" aria-labelledby="navbarDropdown">
-            <!--<a class="dropdown-item" href="#">Lille</a>
-            <a class="dropdown-item" href="#">Lyon</a>
-            <a class="dropdown-item" href="#">Marseille</a>
-            <a class="dropdown-item" href="#">Paris</a>-->
-            <%= link_to "Players", rankings_players_path(game: "doa6"), class: "dropdown-item" %>
-            <%= link_to "Tournois", rankings_tournois_path(game: "doa6"), class: "dropdown-item" %>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle dropbtn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Guilty Gear Xrd
-          </a>
-          <div class="dropdown-content" aria-labelledby="navbarDropdown">
-            <!--<a class="dropdown-item" href="#">Lille</a>
-            <a class="dropdown-item" href="#">Lyon</a>
-            <a class="dropdown-item" href="#">Marseille</a>
-            <a class="dropdown-item" href="#">Paris</a>
-            <a class="dropdown-item" href="#">Players</a>
-            <a class="dropdown-item" href="#">Tournament</a>-->
-            <a class="dropdown-item" href="#">Non disponible</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle dropbtn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Mortal Kombat 11
-          </a>
-          <div class="dropdown-content" aria-labelledby="navbarDropdown">
-            <!--<a class="dropdown-item" href="#">Lille</a>s
-            <a class="dropdown-item" href="#">Lyon</a>
-            <a class="dropdown-item" href="#">Marseille</a>
-            <a class="dropdown-item" href="#">Paris</a>-->
-            <%= link_to "Players", rankings_players_path(game: "mk11"), class: "dropdown-item" %>
-            <%= link_to "Tournois", rankings_tournois_path(game: "mk11"), class: "dropdown-item" %>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle dropbtn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Soul Calibur VI
-          </a>
-          <div class="dropdown-content" aria-labelledby="navbarDropdown">
-            <!--<a class="dropdown-item" href="#">Lille</a>
-            <a class="dropdown-item" href="#">Lyon</a>
-            <a class="dropdown-item" href="#">Marseille</a>
-            <a class="dropdown-item" href="#">Paris</a>
-            <a class="dropdown-item" href="#">Players</a>
-            <a class="dropdown-item" href="#">Tournament</a>-->
-            <a class="dropdown-item" href="#">Non disponible</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle dropbtn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Super Smash Bros Ultimate
-          </a>
-          <div class="dropdown-content" aria-labelledby="navbarDropdown">
-            <!--<a class="dropdown-item" href="#">Lille</a>
-            <a class="dropdown-item" href="#">Lyon</a>
-            <a class="dropdown-item" href="#">Marseille</a>
-            <a class="dropdown-item" href="#">Paris</a>
-            <a class="dropdown-item" href="#">Players</a>
-            <a class="dropdown-item" href="#">Tournament</a>-->
-            <a class="dropdown-item" href="#">Non disponible</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle dropbtn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Tekken 7
-          </a>
-          <div class="dropdown-content" aria-labelledby="navbarDropdown">
-            <!--<a class="dropdown-item" href="#">Lille</a>
-            <a class="dropdown-item" href="#">Lyon</a>
-            <a class="dropdown-item" href="#">Marseille</a>
-            <a class="dropdown-item" href="#">Paris</a>-->
-            <%= link_to "Players", rankings_players_path(game: "t7"), class: "dropdown-item" %>
-            <%= link_to "Tournois", rankings_tournois_path(game: "t7"), class: "dropdown-item" %>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle dropbtn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Informations
-          </a>
-          <div class="dropdown-content" aria-labelledby="navbarDropdown">
-            <!--<%= link_to "Partenaires", informations_partenaire_path, class:"dropdown-item" %>-->
-            <%= link_to "Systeme Elo", informations_calcul_elo_path, class:"dropdown-item" %>
-            <!--<%= link_to "Qui sommes-nous?", informations_association_path, class:"dropdown-item" %>-->
-            <%= link_to "Contact", informations_contact_path, class:"dropdown-item" %>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
