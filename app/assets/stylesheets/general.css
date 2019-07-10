@@ -42,6 +42,9 @@ li {
   line-height: 1.5;
   text-decoration: none;
 }
+.small {
+  font-size: 0.8em;
+}
 
 /* Page index */
 .content .content-header {

@@ -4,22 +4,21 @@
     <%= link_to raw("<i class='fab fa-twitter-square'></i>"), 'https://twitter.com/VSFEsport' %>
     <%= link_to raw("<i class='fab fa-discord'></i>"), 'https://discord.gg/fybPARR' %>
     <%= link_to raw("<i class='fab fa-instagram'></i>"), 'https://www.instagram.com/vsf_esport/' %>
-    <hr>
-    <p>Développé à l'aide de l'API Smash.gg</p>
-    <p>Logo par: <%= link_to "Seb Arts", "https://www.behance.net/sebastienarts/info" %></p>
-    <div class="">
+    <br>
+    <!--<p>Développé à l'aide de l'API Smash.gg</p>
+    <p>Logo par: <%= link_to "Seb Arts", "https://www.behance.net/sebastienarts/info" %></p>-->
+    <!--<div class="">
         <% if current_user %>
         <%= link_to "Deconnection", logout_path, class: "" %>
         <% else %>
         <%= link_to "Connection", login_path, class: "" %>
         <% end %>
-    </div>
+    </div>-->
     
-    <div class="footer-bottom text-center">
-        <div class="col-md-2 offset-md-5">
+    <div class="footer-bottom">
+        <div class="">
            <%= link_to image_tag("vsfe8.png", alt: "VSFE Logo", class: "logo"), "http://www.versusfightingesport.org" %>
         </div>
-		
 		<p>VSFE - 2019 - &copy; Tous droits résérvés - <%= link_to "Crédit et mentions légales" %> </p>
 	</div>
 </footer>
