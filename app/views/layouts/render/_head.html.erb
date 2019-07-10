@@ -1,5 +1,39 @@
 <nav class="navbar">
-<%= link_to image_tag("vsfe5.png", class: "logo"), root_path %>
+<%= link_to image_tag("vsfe6.png", class: "logo"), root_path %>
+<!-- Navbar menu large-->
+<div class="navbar-menu-large">
+    <ul class="menu-large">
+         <li class="">
+            <a href="" class="">
+             Accueil
+            </a>
+         </li>
+         <li class="">
+            <a href="" class="">
+             Les Jeux
+            </a>
+         </li>
+         <li class="">
+            <a href="" class="">
+             Tournois
+            </a>
+         </li>
+         <li class="">
+            <a href="" class="">
+             Info
+            </a>
+         </li>
+        </ul>
+        <div>
+        <% if current_user %>
+            <%= link_to "Deconnection", logout_path, class: "btn" %>
+            <% else %>
+            <%= link_to "Connection", login_path, class: "btn" %>
+            <%= link_to "Inscription", login_path, class: "btn" %>
+            <% end %>
+        </div>
+    </div>
+
 <!-- Button menu -->
     <div class="menu-btn">
         <div class="btn-line"></div>
@@ -13,24 +47,29 @@
               <%= link_to image_tag("vsfe4.png", class: "logo"), root_path %>
             </div>
             <div>
-            <div class="btn">Login</div>
-            <div class="btn">Sign up</div>
+            <% if current_user %>
+                <%= link_to "Deconnection", logout_path, class: "btn" %>
+                <% else %>
+                <%= link_to "Connection", login_path, class: "btn" %>
+                <%= link_to "Inscription", login_path, class: "btn" %>
+                <% end %>
             </div>
         </div>
+
         <ul class="menu-nav">
          <li class="nav-item">
             <a href="" class="nav-link">
-             Home
+             Accueil
             </a>
          </li>
          <li class="nav-item">
             <a href="" class="nav-link">
-             Games
+             Les Jeux
             </a>
          </li>
          <li class="nav-item">
             <a href="" class="nav-link">
-             Tournaments
+             Tournois
             </a>
          </li>
          <li class="nav-item">
@@ -46,9 +85,10 @@
         <%= link_to raw("<i class='fab fa-instagram'></i>"), 'https://www.instagram.com/vsf_esport/' %>
         </div>
     </div>
+    
    
 
 </nav>
-<div class="navbar-title" align="center">
+<!--<div class="navbar-title" align="center">
 	<p class="subheading">Versus Fighting Esport French Progaming Statistics</p>
-</div>
+</div>-->
