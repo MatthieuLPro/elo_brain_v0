@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "informations/contact" => "informations#contact"
   get "informations/partenaire" => "informations#partenaire"
   get "informations/association" => "informations#association"
+  get "informations/games" => "informations#games"
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:index, :new, :create, :show]
