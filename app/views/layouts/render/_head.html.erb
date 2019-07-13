@@ -4,22 +4,16 @@
 <div class="navbar-menu-large">
     <ul class="menu-large">
          <li class="">
-            <a href="" class="">
-             Accueil
-            </a>
-         </li>
+            <%= link_to "Accueil", root_path, class: "" %>
+        </li>
          <li class="">
             <%= link_to "Les jeux", informations_games_path, class: "" %>
          </li>
          <li class="">
-            <a href="" class="">
-             Tournois
-            </a>
+            <%= link_to "Tournois", root_path, class: "" %>            
          </li>
          <li class="">
-            <a href="" class="">
-             Info
-            </a>
+             <%= link_to "Info", root_path, class: "" %>            
          </li>
         </ul>
         <div>
@@ -56,24 +50,16 @@
 
         <ul class="menu-nav">
          <li class="nav-item">
-            <a href="" class="nav-link">
-             Accueil
-            </a>
+            <%= link_to "Accueil", root_path, class: "nav-link" %>
          </li>
          <li class="nav-item">
-            <a href="" class="nav-link">
-             Les Jeux
-            </a>
+            <%= link_to "Les jeux", informations_games_path, class: "nav-link" %>
          </li>
          <li class="nav-item">
-            <a href="" class="nav-link">
-             Tournois
-            </a>
+            <%= link_to "Tournois", root_path, class: "nav-link" %>
          </li>
          <li class="nav-item">
-            <a href="" class="nav-link">
-             Info
-            </a>
+            <%= link_to "Info", root_path, class: "nav-link" %>
          </li>
         </ul>
         <div class="navbar-icons" >

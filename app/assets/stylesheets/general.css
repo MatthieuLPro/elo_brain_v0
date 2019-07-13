@@ -53,9 +53,10 @@ li {
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.9);
 }
-.content .content-bg {
-  /* background-image: url('https://images.unsplash.com/photo-1558008322-9793c57cb73b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2378&q=80'); */
+.content .content-bg.home-bg {
   background-image: url('https://images.unsplash.com/photo-1558008258-be2e19614dda?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2378&q=80');
+}
+.content .content-bg {
   background-size: cover;
   background-position: center center;
   filter: blur(6px);
