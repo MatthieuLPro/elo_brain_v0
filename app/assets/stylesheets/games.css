@@ -1,3 +1,41 @@
-.content .content-bg.games-bg {
+/* .content .content-bg.games-bg {
   background-image: url('https://images.unsplash.com/photo-1558008322-9793c57cb73b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2378&q=80') !important;
+} */
+
+.content-games {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #eee;
+  min-height: 70vh;
+}
+.search-games {
+  display: flex;
+  height: 65px;
+  align-items: center;
+  width: 90%;
+}
+.search-games input {
+  width: 92%;
+  height: 2.5em;
+  margin-right: 20px;
+}
+.search-games i {
+  font-size: 1.4em;
+}
+.games-list {
+  width: 90%;
+}
+.game {
+  padding: 8px;
+  margin-bottom: 10px; /* a retirer si ya du display: flex;*/
+  border: 1px solid rgb(48, 56, 78);
+  height: 65px;
+  display: block;
+}
+.game h3 {
+  color: rgb(44, 231, 206);
+}
+.game p {
+  font-size: 0.8em;
 }
