@@ -114,14 +114,17 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 70%;
+  height: 70vh;
   overflow: hidden;
+  background-image: url('brush-stroke-banner-1.png');
+  /* background-position: 60% 50%; */
+  background-size: cover;
 }
 .nav-item {
   transform: translate3d(600px, 0, 0);
   transition: all ease-out 0.7s;
   margin: 5px auto;
-  width: 100%;
+  width: 90%;
 }
 .nav-item.show {
   transform: translate3d(0, 0, 0);

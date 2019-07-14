@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'ssf4';
+  src: url('/app/assets/fonts/ssf4.otf') format('truetype');
+}
+/* https://fontmeme.com/fonts/ssf4-abuket-font/ */
+
 :root {
   --primary-color: rgba(66, 217, 200, 1);
   --secondary-color: rgba(150, 56, 122, 1);
@@ -44,6 +50,9 @@ li {
 }
 .small {
   font-size: 0.8em;
+}
+.show {
+  opacity: 1 !important;
 }
 
 /* Page index */

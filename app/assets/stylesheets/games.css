@@ -19,9 +19,11 @@
   width: 92%;
   height: 2.5em;
   margin-right: 20px;
+  opacity: 0;
 }
 .search-games i {
   font-size: 1.4em;
+  cursor: pointer;
 }
 .games-list {
   width: 90%;

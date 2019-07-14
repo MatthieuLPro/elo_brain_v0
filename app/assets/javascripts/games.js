@@ -1,6 +1,8 @@
 $(document).on('turbolinks:load', function() {
   const searchInput = document.getElementById('searchInput');
-  if (searchInput) {
+  const searchIcon = document.getElementById('fa-search');
+
+  if (searchInput && searchIcon) {
     searchInput.addEventListener('input', function(e) {
       sortGames(e.target.value);
     });
@@ -19,8 +21,10 @@ $(document).on('turbolinks:load', function() {
           game.style.display = 'none';
         }
       });
-      // console.log(games);
     }
-    //   sortGames();
+
+    $(searchIcon).click(function() {
+      $(searchInput).toggleClass('show');
+    });
   }
 });
