@@ -1,0 +1,10 @@
+.player-informations {
+  display: flex;
+  background-color: rgb(141, 141, 141);
+}
+.player-ranking-elo {
+  background-color: rgb(28, 34, 32);
+
+  width: 95%;
+  margin: 3% auto 0 auto;
+}

@@ -3,13 +3,11 @@ footer {
   font-size: 0.8em;
   padding-top: 20px;
   text-align: center;
-}
-footer a {
   color: #fff;
 }
+
 footer i {
   font-size: 3em;
-  color: rgba(255, 255, 255, 1);
   margin: 10px;
 }
 footer i:hover {
@@ -19,7 +17,6 @@ footer i:hover {
 footer .footer-bottom {
   background: rgba(51, 51, 51, 1);
   padding: 1rem;
-  color: #fff;
   font-size: 0.7em;
   text-align: center;
 }
@@ -29,6 +26,5 @@ footer .footer-bottom img {
   display: block;
 }
 footer .footer-bottom a {
-  color: var(--color-light);
   opacity: 0.5;
 }
