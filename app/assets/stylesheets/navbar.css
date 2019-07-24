@@ -4,7 +4,7 @@
   top: 0;
   right: 0;
   left: 0;
-  background-color: var(--thirdly-color);
+  background-color: var(--black-color);
   box-shadow: rgba(20, 20, 20, 0.6) 2px 3px 7px;
   display: flex;
   -ms-flex-wrap: wrap;
